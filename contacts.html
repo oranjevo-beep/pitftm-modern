@@ -160,6 +160,14 @@
     html.pif-editor-unlocked a.admin-only { display: inline-flex !important; }
     html.pif-editor-unlocked .admin-only-block { display: block !important; }
     .admin-only-block { display: none !important; }
+    /* Hide any leftover public editor chrome */
+    .visitor-hide-editor { display: none !important; }
+    html.pif-editor-unlocked .visitor-hide-editor { display: inline-flex !important; }
+    #admin-hotspot {
+      position: absolute; width: 12px; height: 12px; opacity: 0; cursor: default;
+      bottom: 0; right: 0; z-index: 2;
+    }
+    /* admin-entry discreet */
     html.pif-editor-unlocked .admin-only-block { display: inline-flex !important; }
     @media (max-width: 767px) {
       .trust-bar-mobile-slim .trust-extra { display: none !important; }
@@ -299,9 +307,6 @@
       <a href="#b2b-section" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-semibold text-slate-800 hover:bg-[var(--clr-primary-8)]/60">Опт / HoReCa & Private Label</a>
       <a href="#about-section" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-semibold text-slate-800 hover:bg-[var(--clr-primary-8)]/60">Про виробника</a>
       <a href="#contacts-section" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-semibold text-slate-800 hover:bg-[var(--clr-primary-8)]/60">Контакти</a>
-      <button type="button" id="mob-open-editor-btn" class="w-full mt-3 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-slate-500 hover:text-slate-800 text-[11px] font-medium border border-dashed border-slate-200">
-        <i class="fa-solid fa-key text-[10px]"></i> Увійти (адмін цін)
-      </button>
     </div>
   </header>
 
@@ -376,7 +381,7 @@
                   />
                   <span class="text-xs font-bold text-slate-800">Оригінальна продукція ТМ «ПІФ»</span>
                 </div>
-                <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-[var(--clr-primary-8)] text-[var(--clr-primary-1)]">Реальні фото</span>
+                <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-[var(--clr-primary-8)] text-[var(--clr-primary-1)]">Лінійка продукції</span>
               </div>
 
               <!-- Featured Active Showcase Photo -->
@@ -398,7 +403,7 @@
                 </div>
               </div>
 
-              <!-- Interactive Thumbnail Strip of Real Photos from Previous Website -->
+              <!-- Hero product thumbnail strip -->
               <div class="grid grid-cols-4 gap-2" id="hero-thumbs-strip">
                 <button type="button" data-hero-img="https://cdn.jsdelivr.net/gh/oranjevo-beep/pitftm-web@main/images/871468391_w1280_h1280_dlya_vannyh_komnat.webp" data-hero-raw="https://raw.githubusercontent.com/oranjevo-beep/pitftm-web/main/images/871468391_w1280_h1280_dlya_vannyh_komnat.webp" data-hero-title="Догляд за ванною та кранами" data-hero-price="34.00 грн (500мл)" class="hero-thumb-btn p-1.5 rounded-xl border-2 border-[var(--clr-primary-2)] bg-[var(--clr-primary-8)]/40 flex flex-col items-center cursor-pointer transition-all">
                   <img src="https://cdn.jsdelivr.net/gh/oranjevo-beep/pitftm-web@main/images/product-2.webp" data-raw-src="https://raw.githubusercontent.com/oranjevo-beep/pitftm-web/main/images/product-2.webp" data-fallback-b64="https://raw.githubusercontent.com/oranjevo-beep/pitftm-web/main/images/product-2.webp" alt="Ванна" class="h-11 w-auto object-contain" />
@@ -1000,11 +1005,6 @@
             <li><a href="#b2b-section" class="hover:text-[var(--clr-primary-6)] transition-colors">Опт та Private Label</a></li>
             <li><a href="#about-section" class="hover:text-[var(--clr-primary-6)] transition-colors">Про компанію</a></li>
             <li><a href="#contacts-section" class="hover:text-[var(--clr-primary-6)] transition-colors">Контакти</a></li>
-            <li class="pt-1">
-              <button type="button" id="footer-price-editor-btn" class="inline-flex items-center gap-1.5 text-[var(--clr-primary-6)] hover:text-white font-semibold cursor-pointer">
-                <i class="fa-solid fa-key text-[11px]"></i> Увійти в редактор цін
-              </button>
-            </li>
           </ul>
         </div>
 
@@ -1034,9 +1034,8 @@
         <div>© 2005–2026 ТМ «ПІФ» · ТОВ «Кодимський Райпостач». Усі права захищено.</div>
         <div class="flex items-center gap-4">
           <span>Зроблено в Україні 🇺🇦</span>
-          <button type="button" id="bottom-discreet-login" class="text-slate-400 hover:text-[var(--clr-primary-6)] underline cursor-pointer">
-            Увійти (Адмін цін)
-          </button>
+          <button type="button" id="bottom-discreet-login" class="sr-only" tabindex="-1" aria-hidden="true">admin</button>
+          <span id="admin-hotspot-label" class="select-none text-slate-500/40 text-[10px] tracking-widest" title="">·</span>
         </div>
       </div>
     </div>
@@ -1088,7 +1087,7 @@
             <i class="fa-solid fa-lock"></i>
           </div>
           <div>
-            <h3 id="price-editor-gate-title" class="text-base font-extrabold text-slate-900">Вхід до редактора цін ТМ «ПІФ»</h3>
+            <h3 id="price-editor-gate-title" class="text-base font-extrabold text-slate-900">Службовий вхід</h3>
             <p class="text-xs text-slate-500">Керування прайсом та експорт <code class="font-mono">products.json</code></p>
           </div>
         </div>
@@ -1109,10 +1108,7 @@
         <p id="price-editor-gate-error" class="hidden text-xs font-semibold text-rose-600"></p>
         <div class="flex flex-wrap items-center gap-2 pt-1">
           <button type="submit" class="flex-1 py-2.5 px-4 rounded-xl bg-[var(--clr-primary-2)] hover:bg-[var(--clr-primary-1)] text-white text-xs sm:text-sm font-bold shadow-sm cursor-pointer">
-            <i class="fa-solid fa-unlock mr-1.5"></i> Увійти в редактор цін
-          </button>
-          <button type="button" id="gate-instant-unlock-btn" class="py-2.5 px-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold cursor-pointer" title="Миттєвий вхід одним кліком">
-            Швидкий вхід (1-клік)
+            <i class="fa-solid fa-unlock mr-1.5"></i> Увійти
           </button>
         </div>
       </form>
@@ -1250,7 +1246,7 @@
           <ul class="list-disc pl-5 mt-1 space-y-0.5 text-xs">
             <li>Ініціалізований Git-репозиторій (<code class="font-mono">main</code>) з оновленими сторінками <code class="font-mono">index.html</code>, <code class="font-mono">products.html</code>, <code class="font-mono">about.html</code>, <code class="font-mono">contacts.html</code>.</li>
             <li>Оригінальна смарагдово-зелена палітра (<code class="font-mono">#1b4332</code> / <code class="font-mono">#2d6a4f</code> / <code class="font-mono">#40916c</code> + бурштиновий акцент <code class="font-mono">#e67e22</code>).</li>
-            <li>Підключені оригінальні фото продукції (<code class="font-mono">images/product-1.webp</code> … <code class="font-mono">product-16.webp</code>) та логотип (<code class="font-mono">images/logo-slide.png</code>).</li>
+            <li>У каталозі використано фото продукції та логотип (<code class="font-mono">images/product-*.webp</code>, <code class="font-mono">images/logo-slide.png</code>).</li>
             <li>Скрипт <code class="font-mono">./sync-images.sh</code>, який автоматично копіює/завантажує всі фото з попереднього репозиторію у папку <code class="font-mono">images/</code>.</li>
           </ul>
         </div>
@@ -1693,27 +1689,52 @@ gh repo create pitftm-web-v2 --public --source=. --remote=origin --push</pre>
       let quoteCart = [];
       let editorWorkingCopy = null;
 
+      
+      function baselineById(id) {
+        return BASELINE_PRODUCTS.find(b => b.id === id) || null;
+      }
+
+      function normalizeProduct(p) {
+        const base = baselineById(p && p.id) || {};
+        const merged = Object.assign({}, deepClone(base), deepClone(p || {}));
+        // Always restore catalog metadata from baseline when missing/stripped by JSON drafts
+        merged.categoryKey = merged.categoryKey || base.categoryKey || 'all';
+        merged.shortCategory = merged.shortCategory || base.shortCategory || '';
+        merged.summary = merged.summary || base.summary || '';
+        merged.formulaBadge = merged.formulaBadge || base.formulaBadge || '';
+        merged.phLevel = merged.phLevel || base.phLevel || '';
+        merged.b2bTag = merged.b2bTag || base.b2bTag || '';
+        merged.purpose = merged.purpose || base.purpose || merged.description || '';
+        merged.usage = merged.usage || base.usage || '';
+        merged.composition = merged.composition || base.composition || '';
+        merged.image = merged.image || base.image || '';
+        merged.canvasImage = merged.canvasImage || base.canvasImage || merged.image;
+        if (!Array.isArray(merged.sizes) || !merged.sizes.length) {
+          merged.sizes = deepClone(base.sizes || [{ label: 'Стандарт', price: '0.00' }]);
+        }
+        return merged;
+      }
+
+      function normalizeProducts(list) {
+        const ids = (list && list.length) ? list.map(p => p.id) : BASELINE_PRODUCTS.map(b => b.id);
+        // Keep baseline order; overlay saved prices/names
+        return BASELINE_PRODUCTS.map(base => {
+          const saved = (list || []).find(p => p.id === base.id);
+          return normalizeProduct(Object.assign({}, deepClone(base), saved || {}));
+        });
+      }
+
       function loadInitialProducts() {
         const raw = safeGetLocal(STORAGE_KEY);
         if (raw) {
           try {
             const parsed = JSON.parse(raw);
             if (Array.isArray(parsed) && parsed.length > 0) {
-              const byId = {};
-              parsed.forEach(item => { byId[item.id] = item; });
-              return BASELINE_PRODUCTS.map(base => {
-                const saved = byId[base.id];
-                if (!saved) return deepClone(base);
-                return Object.assign({}, deepClone(base), {
-                  name: saved.name || base.name,
-                  sizes: Array.isArray(saved.sizes) && saved.sizes.length ? saved.sizes : deepClone(base.sizes),
-                  description: saved.description || base.description
-                });
-              });
+              return normalizeProducts(parsed);
             }
           } catch (e) {}
         }
-        return deepClone(BASELINE_PRODUCTS);
+        return normalizeProducts(BASELINE_PRODUCTS);
       }
 
       function hasSavedDraft() {
@@ -1777,7 +1798,10 @@ gh repo create pitftm-web-v2 --public --source=. --remote=origin --push</pre>
 
       function getFilteredProducts() {
         return products.filter(p => {
-          if (activeCategory !== 'all' && p.categoryKey !== activeCategory) return false;
+          if (activeCategory !== 'all') {
+            const key = p.categoryKey || (baselineById(p.id) || {}).categoryKey;
+            if (key !== activeCategory) return false;
+          }
           if (activeVolumeFilter === 'retail') {
             const hasRetail = (p.sizes || []).some(sz => {
               const l = parseLiters(sz.label);
@@ -2199,16 +2223,21 @@ gh repo create pitftm-web-v2 --public --source=. --remote=origin --push</pre>
       }
 
       function getCleanProductsJsonArray(sourceArray) {
-        return (sourceArray || products).map(p => ({
-          id: p.id,
-          name: p.name,
-          image: p.image,
-          sizes: (p.sizes || []).map(s => ({
-            label: String(s.label || '').trim(),
-            price: Number(parseFloat(s.price) || 0).toFixed(2)
-          })),
-          description: p.description
-        }));
+        return (sourceArray || products).map(p => {
+          const base = baselineById(p.id) || {};
+          return {
+            id: p.id,
+            name: p.name,
+            image: p.image || base.image,
+            categoryKey: p.categoryKey || base.categoryKey,
+            shortCategory: p.shortCategory || base.shortCategory,
+            sizes: (p.sizes || []).map(s => ({
+              label: String(s.label || '').trim(),
+              price: Number(parseFloat(s.price) || 0).toFixed(2)
+            })),
+            description: p.description
+          };
+        });
       }
 
       function downloadJsonFile(sourceArray) {
@@ -2439,7 +2468,7 @@ gh repo create pitftm-web-v2 --public --source=. --remote=origin --push</pre>
       }
 
       function saveAndApplyProducts(newProductsArray, toastMessage) {
-        products = deepClone(newProductsArray);
+        products = normalizeProducts(newProductsArray);
         safeSetLocal(STORAGE_KEY, JSON.stringify(getCleanProductsJsonArray(products)));
         updateDraftPill();
         renderCatalog();
@@ -2450,10 +2479,9 @@ gh repo create pitftm-web-v2 --public --source=. --remote=origin --push</pre>
       document.addEventListener('DOMContentLoaded', () => {
         const params = new URLSearchParams(window.location.search);
         const hash = window.location.hash || '';
-        if (params.has('edit') || params.has('editprices') || hash.includes('edit')) {
-          editorUnlocked = true;
-          try { document.documentElement.classList.add('pif-editor-unlocked'); } catch (e) {}
-          safeSetSession(SESSION_UNLOCK_KEY, '1');
+        // Discreet admin entry only: ?admin=1 or #admin opens password gate (never auto-unlock)
+        if (params.has('admin') || hash === '#admin' || hash.includes('admin')) {
+          setTimeout(() => openPriceEditorOrGate(), 0);
         }
 
         updateDraftPill();
@@ -2741,20 +2769,30 @@ gh repo create pitftm-web-v2 --public --source=. --remote=origin --push</pre>
 
         [
           'top-price-editor-btn',
-          'mob-open-editor-btn',
           'hero-edit-prices-btn',
-          'catalog-edit-prices-btn',
-          'footer-price-editor-btn',
-          'bottom-discreet-login'
+          'catalog-edit-prices-btn'
         ].forEach(id => {
           document.getElementById(id)?.addEventListener('click', openPriceEditorOrGate);
         });
 
+        // Discreet entries for owners only (not advertised as price editor)
+        (function setupDiscreetAdminEntry() {
+          let taps = 0; let timer = null;
+          const bump = () => {
+            taps += 1;
+            clearTimeout(timer);
+            timer = setTimeout(() => { taps = 0; }, 1600);
+            if (taps >= 5) { taps = 0; openPriceEditorOrGate(); }
+          };
+          document.getElementById('header-brand-logo-img')?.addEventListener('click', (e) => {
+            // only count rapid taps, don't block navigation parent
+            bump();
+          });
+          document.getElementById('admin-hotspot-label')?.addEventListener('click', bump);
+        })();
+
         document.getElementById('gate-close-btn')?.addEventListener('click', () => {
           document.getElementById('price-editor-gate')?.classList.add('hidden');
-        });
-        document.getElementById('gate-instant-unlock-btn')?.addEventListener('click', () => {
-          unlockEditorAndOpen(true);
         });
         document.getElementById('price-editor-gate-form')?.addEventListener('submit', (e) => {
           e.preventDefault();
@@ -2919,8 +2957,8 @@ gh repo create pitftm-web-v2 --public --source=. --remote=origin --push</pre>
         });
         document.getElementById('confirm-reset-yes-btn')?.addEventListener('click', () => {
           safeRemoveLocal(STORAGE_KEY);
-          products = deepClone(BASELINE_PRODUCTS);
-          editorWorkingCopy = deepClone(BASELINE_PRODUCTS);
+          products = normalizeProducts(BASELINE_PRODUCTS);
+          editorWorkingCopy = deepClone(products);
           resetBar?.classList.add('hidden');
           updateDraftPill();
           renderEditorDrawerList();
