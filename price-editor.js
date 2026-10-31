@@ -1,1 +1,4 @@
-/* Price editor lives in the inline app (index.html). Password: editor-config.json (default changeme). This file is a no-op stub. */
+// ТМ «ПІФ» — Price Editor Module (Integrated in index.html & products.html)
+(function () {
+  window.PIF_EDITOR_READY = true;
+})();

@@ -1,8 +1,8 @@
 {
-  "name": "ТМ ПІФ — Побутова та професійна хімія",
+  "name": "ТМ «ПІФ» — Побутова та промислова хімія",
   "short_name": "ТМ ПІФ",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#f8fafc",
-  "theme_color": "#339af0"
+  "background_color": "#f4f9f5",
+  "theme_color": "#1b4332"
 }
