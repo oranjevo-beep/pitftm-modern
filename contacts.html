@@ -152,17 +152,36 @@
         padding-bottom: 68px;
       }
     }
+
+    /* Visitor-facing mobile chrome: hide admin / reduce clutter on iPhone */
+    .admin-only { display: none !important; }
+    html.pif-editor-unlocked .admin-only { display: inline-flex !important; }
+    html.pif-editor-unlocked button.admin-only,
+    html.pif-editor-unlocked a.admin-only { display: inline-flex !important; }
+    html.pif-editor-unlocked .admin-only-block { display: block !important; }
+    .admin-only-block { display: none !important; }
+    @media (max-width: 767px) {
+      .trust-bar-mobile-slim .trust-extra { display: none !important; }
+      .site-header-inner { height: 3.5rem !important; }
+      body { padding-bottom: calc(4.25rem + env(safe-area-inset-bottom, 0px)); }
+      #mobile-bottom-bar {
+        padding-bottom: max(0.35rem, env(safe-area-inset-bottom));
+      }
+      #header-whatsapp-btn { display: none !important; }
+      .hero-admin-cta { display: none !important; }
+    }
   </style>
 </head>
 <body class="min-h-screen flex flex-col bg-[var(--clr-page-bg)] text-slate-900 selection:bg-[var(--clr-primary-3)] selection:text-white">
 
   <!-- 1. TOP TRUST & UTILITY BAR -->
-  <div class="bg-[var(--clr-primary-2)] text-white text-xs border-b border-[var(--clr-primary-1)]/40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-wrap items-center justify-between gap-2">
+  <div class="trust-bar-mobile-slim bg-[var(--clr-primary-2)] text-white text-xs border-b border-[var(--clr-primary-1)]/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 sm:py-2 flex flex-wrap items-center justify-between gap-2">
       <div class="flex items-center gap-2 sm:gap-4 flex-wrap">
-        <span class="inline-flex items-center gap-1.5 font-semibold text-[var(--clr-primary-6)]">
+        <span class="inline-flex items-center gap-1.5 font-semibold text-white">
           <i class="fa-solid fa-industry"></i>
-          ТМ «ПІФ» — Виробник в Україні з 2005 року
+          <span class="sm:hidden">Виробник з 2005</span>
+          <span class="hidden sm:inline">ТМ «ПІФ» — Виробник в Україні з 2005 року</span>
         </span>
         <span class="hidden md:inline text-slate-400">|</span>
         <span class="hidden md:inline text-slate-300">ТОВ «Кодимський Райпостач» (м. Одеса)</span>
@@ -171,15 +190,17 @@
         </span>
       </div>
 
-      <div class="flex items-center gap-3 sm:gap-4 ml-auto">
-        <a href="tel:+380487017029" class="hover:text-[var(--clr-primary-6)] transition-colors hidden sm:inline-flex items-center gap-1.5 tabular-nums">
-          <i class="fa-solid fa-phone-volume text-[var(--clr-primary-5)]"></i> (048) 701-70-29
+      <div class="flex items-center gap-2 sm:gap-4 ml-auto">
+        <a href="tel:+380487017029" class="hover:text-white/90 transition-colors hidden sm:inline-flex items-center gap-1.5 tabular-nums text-white/90">
+          <i class="fa-solid fa-phone-volume"></i> (048) 701-70-29
         </a>
-        <a href="tel:+380679720560" class="hover:text-[var(--clr-primary-6)] transition-colors inline-flex items-center gap-1.5 font-medium tabular-nums">
-          <i class="fa-solid fa-mobile-screen text-[var(--clr-primary-5)]"></i> +380 67 972 05 60
+        <a href="tel:+380679720560" class="hover:text-white transition-colors inline-flex items-center gap-1.5 font-medium tabular-nums text-white">
+          <i class="fa-solid fa-phone"></i>
+          <span class="hidden xs:inline sm:inline">+380 67 972 05 60</span>
+          <span class="sm:hidden">Зателефонувати</span>
         </a>
-        <div class="hidden sm:inline-flex items-center gap-1.5 bg-black/20 border border-white/15 px-2 py-0.5 rounded-md">
-          <i class="fa-solid fa-palette text-[var(--clr-accent-gold)] text-[11px]"></i>
+        <div class="hidden md:inline-flex items-center gap-1.5 bg-black/20 border border-white/15 px-2 py-0.5 rounded-md">
+          <i class="fa-solid fa-palette text-white/80 text-[11px]"></i>
           <label for="theme-palette-select" class="sr-only">Кольорова палітра</label>
           <select id="theme-palette-select" class="bg-transparent text-white text-[11px] font-semibold focus:outline-none cursor-pointer">
             <option value="original-blue" class="text-slate-900" selected>Колір: Оригінал ПІФ (#339af0)</option>
@@ -188,11 +209,11 @@
             <option value="industrial-blue" class="text-slate-900">Колір: Navy / Sky</option>
           </select>
         </div>
-        <button type="button" id="open-github-repo-modal-btn" class="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 text-white border border-white/20 px-2.5 py-1 rounded-md font-semibold transition-colors cursor-pointer" title="Інструкція та файли для нового GitHub репозиторію">
+        <button type="button" id="open-github-repo-modal-btn" class="admin-only hidden md:inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 text-white border border-white/20 px-2.5 py-1 rounded-md font-semibold transition-colors cursor-pointer" title="Інструкція для GitHub">
           <i class="fa-brands fa-github"></i>
-          <span class="hidden md:inline">Новий GitHub репо</span>
+          <span class="hidden lg:inline">GitHub</span>
         </button>
-        <button type="button" id="top-price-editor-btn" class="inline-flex items-center gap-1.5 bg-[#e67e22] hover:bg-[#d35400] text-white border border-amber-300/40 px-2.5 py-1 rounded-md font-semibold transition-colors cursor-pointer shadow-xs">
+        <button type="button" id="top-price-editor-btn" class="admin-only hidden sm:inline-flex items-center gap-1.5 bg-white/15 hover:bg-white/25 text-white border border-white/25 px-2.5 py-1 rounded-md font-semibold transition-colors cursor-pointer">
           <i class="fa-solid fa-sliders"></i>
           <span id="top-price-editor-label">Редактор цін</span>
         </button>
@@ -202,12 +223,12 @@
 
   <!-- 2. STICKY MAIN NAVIGATION BAR -->
   <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3">
+    <div class="site-header-inner max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 lg:h-[4.25rem] flex items-center justify-between gap-2 sm:gap-3">
       <a href="#hero-section" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
         <div class="relative h-11 sm:h-12 px-2 py-1 rounded-xl bg-white border border-slate-200/90 shadow-xs flex items-center justify-center shrink-0">
           <img
             id="header-brand-logo-img"
-            src="https://cdn.jsdelivr.net/gh/oranjevo-beep/pitftm-web@main/images/logo-slide.png"
+            src="./images/logo-slide.png"
             data-raw-src="https://raw.githubusercontent.com/oranjevo-beep/pitftm-web/main/images/logo-slide.png"
             alt="Логотип ТМ ПІФ"
             class="h-8 sm:h-9 w-auto object-contain block"
@@ -222,7 +243,7 @@
             <span class="font-extrabold text-base sm:text-xl tracking-tight text-slate-900">ТМ «ПІФ»</span>
             <span class="hidden sm:inline-block text-[11px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--clr-primary-8)] text-[var(--clr-primary-1)] border border-[var(--clr-primary-6)]">З 2005 р. · Одеса</span>
           </div>
-          <span class="text-[11px] sm:text-xs text-slate-500 font-medium">Побутова та промислова хімія</span>
+          <span class="hidden sm:inline text-xs text-slate-500 font-medium">Побутова та промислова хімія</span>
         </div>
       </a>
 
@@ -247,15 +268,15 @@
           </button>
         </div>
 
-        <button type="button" id="open-quote-drawer-btn" class="relative inline-flex items-center gap-2 px-3 sm:px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200/80 text-slate-800 text-xs sm:text-sm font-semibold border border-slate-200/80 transition-colors cursor-pointer">
+        <button type="button" id="open-quote-drawer-btn" class="relative inline-flex items-center justify-center gap-2 min-h-[40px] min-w-[40px] px-2.5 sm:px-3.5 py-2 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-800 text-xs sm:text-sm font-semibold border border-slate-200/70 transition-colors cursor-pointer">
           <i class="fa-solid fa-clipboard-list text-[var(--clr-primary-2)]"></i>
           <span class="hidden md:inline">Заявка</span>
           <span id="quote-count-badge" class="px-1.5 py-0.5 text-xs rounded-full bg-[var(--clr-primary-2)] text-white font-bold tabular-nums">0</span>
         </button>
 
-        <a href="https://api.whatsapp.com/send?phone=380679720560" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-semibold shadow-sm transition-all">
+        <a id="header-whatsapp-btn" href="https://api.whatsapp.com/send?phone=380679720560" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-semibold shadow-sm transition-all">
           <i class="fa-brands fa-whatsapp text-base"></i>
-          <span class="hidden sm:inline">WhatsApp</span>
+          <span class="hidden md:inline">WhatsApp</span>
         </a>
 
         <button type="button" id="mobile-menu-btn" aria-label="Відкрити меню" class="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 border border-slate-200 cursor-pointer">
@@ -277,8 +298,8 @@
       <a href="#b2b-section" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-semibold text-slate-800 hover:bg-[var(--clr-primary-8)]/60">Опт / HoReCa & Private Label</a>
       <a href="#about-section" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-semibold text-slate-800 hover:bg-[var(--clr-primary-8)]/60">Про виробника</a>
       <a href="#contacts-section" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-semibold text-slate-800 hover:bg-[var(--clr-primary-8)]/60">Контакти</a>
-      <button type="button" id="mob-open-editor-btn" class="w-full mt-2 inline-flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg bg-slate-900 text-white text-xs font-semibold">
-        <i class="fa-solid fa-sliders"></i> Відкрити Редактор цін
+      <button type="button" id="mob-open-editor-btn" class="w-full mt-3 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-slate-500 hover:text-slate-800 text-[11px] font-medium border border-dashed border-slate-200">
+        <i class="fa-solid fa-key text-[10px]"></i> Увійти (адмін цін)
       </button>
     </div>
   </header>
@@ -303,20 +324,25 @@
               Розробляємо та виготовляємо дієві мийні й чистячі засоби в Одесі з 2005 року: для посуду, ванних кімнат, сантехніки, каналізаційних труб, підлоги, скла, видалення нагару та рідке мило. Зручні роздрібні флакони <strong class="text-slate-800">500 мл – 1 л</strong> та економічні каністри <strong class="text-slate-800">5 л</strong>.
             </p>
 
-            <div class="flex flex-wrap items-center gap-3 pt-1">
-              <a href="#catalog-section" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[var(--clr-primary-2)] hover:bg-[var(--clr-primary-1)] text-white font-semibold text-sm sm:text-base shadow-sm transition-all">
-                <i class="fa-solid fa-flask"></i>
+            <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-1">
+              <a href="#catalog-section" class="inline-flex items-center justify-center gap-2 min-h-[48px] px-5 py-3 rounded-xl bg-[var(--clr-primary-2)] hover:bg-[var(--clr-primary-1)] text-white font-semibold text-sm sm:text-base shadow-md shadow-[var(--clr-primary-2)]/25 transition-all">
                 Переглянути каталог і ціни
-                <i class="fa-solid fa-arrow-down text-xs"></i>
+                <i class="fa-solid fa-arrow-down text-xs opacity-90"></i>
               </a>
-              <button type="button" id="hero-download-csv-btn" class="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-semibold text-sm sm:text-base border border-slate-300 shadow-sm transition-all cursor-pointer">
-                <i class="fa-solid fa-file-arrow-down text-[var(--clr-primary-2)]"></i>
-                Завантажити прайс (CSV)
-              </button>
-              <button type="button" id="hero-edit-prices-btn" class="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-[var(--clr-primary-8)]/60 hover:bg-[var(--clr-primary-7)]/60 text-[var(--clr-primary-1)] font-semibold text-sm border border-[var(--clr-primary-6)] transition-all cursor-pointer">
-                <i class="fa-solid fa-pen-to-square text-[var(--clr-primary-2)]"></i>
-                Змінити ціни
-              </button>
+              <a href="https://api.whatsapp.com/send?phone=380679720560" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 min-h-[48px] px-4 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-semibold text-sm sm:text-base border border-slate-200 shadow-sm transition-all">
+                <i class="fa-brands fa-whatsapp text-emerald-600 text-base"></i>
+                WhatsApp
+              </a>
+              <div class="hero-admin-cta admin-only-block w-full sm:w-auto flex flex-wrap items-center gap-2">
+                <button type="button" id="hero-download-csv-btn" class="inline-flex items-center gap-2 min-h-[44px] px-3.5 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs sm:text-sm border border-slate-200 transition-all cursor-pointer">
+                  <i class="fa-solid fa-file-arrow-down text-[var(--clr-primary-2)]"></i>
+                  Прайс CSV
+                </button>
+                <button type="button" id="hero-edit-prices-btn" class="inline-flex items-center gap-2 min-h-[44px] px-3.5 py-2.5 rounded-xl bg-[var(--clr-primary-8)] hover:bg-[var(--clr-primary-7)] text-[var(--clr-primary-1)] font-semibold text-xs sm:text-sm border border-[var(--clr-primary-6)] transition-all cursor-pointer">
+                  <i class="fa-solid fa-pen-to-square text-[var(--clr-primary-2)]"></i>
+                  Змінити ціни
+                </button>
+              </div>
             </div>
 
             <div class="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -344,7 +370,7 @@
               <div class="flex items-center justify-between gap-2 pb-1 border-b border-slate-100">
                 <div class="flex items-center gap-2">
                   <img
-                    src="https://cdn.jsdelivr.net/gh/oranjevo-beep/pitftm-web@main/images/logo-slide.png"
+                    src="./images/logo-slide.png"
                     data-raw-src="https://raw.githubusercontent.com/oranjevo-beep/pitftm-web/main/images/logo-slide.png"
                     alt="ТМ ПІФ"
                     class="h-6 w-auto object-contain"
@@ -934,7 +960,7 @@
           <div class="flex items-center gap-3">
             <div class="bg-white px-2.5 py-1.5 rounded-xl flex items-center justify-center shrink-0 shadow-xs">
               <img
-                src="https://cdn.jsdelivr.net/gh/oranjevo-beep/pitftm-web@main/images/logo-slide.png"
+                src="./images/logo-slide.png"
                 data-raw-src="https://raw.githubusercontent.com/oranjevo-beep/pitftm-web/main/images/logo-slide.png"
                 alt="Логотип ТМ ПІФ"
                 class="h-8 w-auto object-contain"
@@ -1259,24 +1285,26 @@ gh repo create pitftm-web-v2 --public --source=. --remote=origin --push</pre>
   </div>
 
   <!-- 12D. STICKY MOBILE BOTTOM NAVIGATION BAR (Responsive Polish for Smartphones <768px) -->
-  <nav id="mobile-bottom-bar" class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 shadow-lg px-2 py-1.5 grid grid-cols-4 gap-1" aria-label="Швидка мобільна навігація">
-    <a href="#catalog-section" class="flex flex-col items-center justify-center py-1 rounded-lg text-[var(--clr-primary-2)] hover:bg-slate-100">
-      <i class="fa-solid fa-boxes-stacked text-sm"></i>
+  <nav id="mobile-bottom-bar" class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 shadow-lg px-1.5 pt-1.5 grid grid-cols-3 gap-0.5" aria-label="Швидка мобільна навігація">
+    <a href="#catalog-section" class="flex flex-col items-center justify-center min-h-[52px] rounded-xl text-[var(--clr-primary-2)] hover:bg-slate-50">
+      <i class="fa-solid fa-boxes-stacked text-base"></i>
       <span class="text-[10px] font-bold mt-0.5">Каталог</span>
     </a>
-    <button type="button" id="mob-bottom-b2b-btn" class="flex flex-col items-center justify-center py-1 rounded-lg text-slate-700 hover:bg-slate-100 cursor-pointer">
-      <i class="fa-solid fa-tags text-sm text-[var(--clr-accent-amber)]"></i>
-      <span id="mob-bottom-b2b-label" class="text-[10px] font-bold mt-0.5">Опт -12%</span>
-    </button>
-    <button type="button" id="mob-bottom-quote-btn" class="relative flex flex-col items-center justify-center py-1 rounded-lg text-slate-700 hover:bg-slate-100 cursor-pointer">
-      <i class="fa-solid fa-clipboard-list text-sm text-[var(--clr-primary-2)]"></i>
-      <span class="text-[10px] font-bold mt-0.5">Заявка (<span id="mob-bottom-badge" class="tabular-nums">0</span>)</span>
-    </button>
-    <a href="https://api.whatsapp.com/send?phone=380679720560" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center py-1 rounded-lg bg-emerald-600 text-white">
-      <i class="fa-brands fa-whatsapp text-sm"></i>
+    <a href="#contacts-section" class="flex flex-col items-center justify-center min-h-[52px] rounded-xl text-slate-700 hover:bg-slate-50">
+      <i class="fa-solid fa-phone text-base text-[var(--clr-primary-2)]"></i>
+      <span class="text-[10px] font-bold mt-0.5">Контакти</span>
+    </a>
+    <a href="https://api.whatsapp.com/send?phone=380679720560" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center min-h-[52px] mx-0.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white shadow-sm">
+      <i class="fa-brands fa-whatsapp text-lg"></i>
       <span class="text-[10px] font-bold mt-0.5">WhatsApp</span>
     </a>
   </nav>
+  <!-- Hidden stubs so existing JS listeners keep working -->
+  <button type="button" id="mob-bottom-b2b-btn" class="hidden" aria-hidden="true"></button>
+  <span id="mob-bottom-b2b-label" class="hidden" aria-hidden="true"></span>
+  <button type="button" id="mob-bottom-quote-btn" class="hidden" aria-hidden="true"></button>
+  <span id="mob-bottom-badge" class="hidden" aria-hidden="true">0</span>
+
 
   <!-- Toast Notification -->
   <div id="pif-toast" class="fixed bottom-20 md:bottom-5 right-4 sm:right-5 z-50 max-w-sm bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl border border-[var(--clr-primary-4)]/50 text-xs sm:text-sm font-semibold flex items-center gap-2.5 opacity-0 pointer-events-none translate-y-3 transition-all duration-300">
@@ -2272,6 +2300,7 @@ gh repo create pitftm-web-v2 --public --source=. --remote=origin --push</pre>
 
       function unlockEditorAndOpen(openDrawerNow) {
         editorUnlocked = true;
+          try { document.documentElement.classList.add('pif-editor-unlocked'); } catch (e) {}
         safeSetSession(SESSION_UNLOCK_KEY, '1');
         const gate = document.getElementById('price-editor-gate');
         if (gate) gate.classList.add('hidden');
@@ -2424,6 +2453,7 @@ gh repo create pitftm-web-v2 --public --source=. --remote=origin --push</pre>
         const hash = window.location.hash || '';
         if (params.has('edit') || params.has('editprices') || hash.includes('edit')) {
           editorUnlocked = true;
+          try { document.documentElement.classList.add('pif-editor-unlocked'); } catch (e) {}
           safeSetSession(SESSION_UNLOCK_KEY, '1');
         }
 
@@ -2927,6 +2957,7 @@ gh repo create pitftm-web-v2 --public --source=. --remote=origin --push</pre>
         // Theme Palette Switcher (Original Emerald Green default, Teal, or Classic Blue)
         const savedTheme = safeGetLocal('pif-color-theme-v2') || 'original-blue';
         document.documentElement.setAttribute('data-theme', savedTheme);
+        try { if (sessionStorage.getItem('pif-editor-unlocked') === '1' || (typeof SESSION_UNLOCK_KEY !== 'undefined' && sessionStorage.getItem(SESSION_UNLOCK_KEY) === '1')) document.documentElement.classList.add('pif-editor-unlocked'); } catch (e) {}
         const themeSel = document.getElementById('theme-palette-select');
         if (themeSel) {
           themeSel.value = savedTheme;
