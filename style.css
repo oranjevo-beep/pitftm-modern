@@ -1,18 +1,21 @@
-/* ТМ «ПІФ» — Original Brand Color Palette & Responsive Tokens */
-:root {
-  --clr-primary-dark: #122e22;
-  --clr-primary-1: #1b4332;
-  --clr-primary-2: #2d6a4f;
-  --clr-primary-3: #40916c;
-  --clr-primary-4: #52b788;
-  --clr-primary-5: #74c69d;
-  --clr-primary-6: #95d5b2;
-  --clr-primary-7: #b7e4c7;
-  --clr-primary-8: #d8f3dc;
-  --clr-accent-gold: #d4af37;
-  --clr-accent-amber: #e67e22;
-  --clr-grey-1: #111827;
-  --clr-grey-5: #6b7280;
-  --clr-grey-10: #f9fafb;
+/* ТМ «ПІФ» — default brand blue #339af0 (full themes in index.html) */
+:root, [data-theme="original-blue"] {
+  --clr-primary-dark: #1864ab;
+  --clr-primary-1: #1c7ed6;
+  --clr-primary-2: #339af0;
+  --clr-primary-3: #228be6;
+  --clr-primary-4: #339af0;
+  --clr-primary-5: #74c0fc;
+  --clr-primary-6: #a5d8ff;
+  --clr-primary-7: #d0ebff;
+  --clr-primary-8: #e7f5ff;
+  --clr-accent-gold: #fab005;
+  --clr-accent-amber: #fd7e14;
+  --clr-page-bg: #f8fafc;
+  --clr-hero-bg-end: #e7f5ff;
+  --clr-ink: #1c2430;
+  --clr-grey-1: #1c2430;
+  --clr-grey-5: #5c6775;
+  --clr-grey-10: #f8fafc;
   --clr-white: #ffffff;
 }

@@ -1,9 +1,20 @@
 <!DOCTYPE html>
-<html lang="uk" class="scroll-smooth">
+<html lang="uk" class="scroll-smooth" data-theme="original-blue">
 <head>
   <meta charset="UTF-8" />
+  <meta name="theme-color" content="#339af0" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ТМ «ПІФ» — Побутова та професійна хімія від виробника (з 2005 року)</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('pif-color-theme-v2') || 'original-blue';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'original-blue');
+      }
+    })();
+  </script>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,8 +46,25 @@
     };
   </script>
   <style>
-    :root, [data-theme="original-green"] {
-      /* Exact original palette from oranjevo-beep/pitftm-web style.css */
+    :root, [data-theme="original-blue"] {
+      /* Classic TM PIF brand blue */
+      --clr-primary-dark: #1864ab;
+      --clr-primary-1: #1c7ed6;
+      --clr-primary-2: #339af0;
+      --clr-primary-3: #228be6;
+      --clr-primary-4: #339af0;
+      --clr-primary-5: #74c0fc;
+      --clr-primary-6: #a5d8ff;
+      --clr-primary-7: #d0ebff;
+      --clr-primary-8: #e7f5ff;
+      --clr-accent-gold: #fab005;
+      --clr-accent-amber: #fd7e14;
+      --clr-page-bg: #f8fafc;
+      --clr-hero-bg-end: #e7f5ff;
+      --clr-ink: #1c2430;
+    }
+
+    [data-theme="original-green"] {
       --clr-primary-dark: #122e22;
       --clr-primary-1: #1b4332;
       --clr-primary-2: #2d6a4f;
@@ -49,8 +77,10 @@
       --clr-accent-gold: #d4af37;
       --clr-accent-amber: #e67e22;
       --clr-page-bg: #f4f9f5;
-      --clr-hero-bg-end: #e6f4ea;
+      --clr-hero-bg-end: #e8f5ee;
+      --clr-ink: #111827;
     }
+
     [data-theme="classic-teal"] {
       --clr-primary-dark: #0f2e2e;
       --clr-primary-1: #115e59;
@@ -65,7 +95,9 @@
       --clr-accent-amber: #e67e22;
       --clr-page-bg: #f2f9f9;
       --clr-hero-bg-end: #e6f6f5;
+      --clr-ink: #111827;
     }
+
     [data-theme="industrial-blue"] {
       --clr-primary-dark: #091e36;
       --clr-primary-1: #0c2d4e;
@@ -80,6 +112,7 @@
       --clr-accent-amber: #e67e22;
       --clr-page-bg: #f4f7fa;
       --clr-hero-bg-end: #eef4f9;
+      --clr-ink: #0f172a;
     }
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -124,7 +157,7 @@
 <body class="min-h-screen flex flex-col bg-[var(--clr-page-bg)] text-slate-900 selection:bg-[var(--clr-primary-3)] selection:text-white">
 
   <!-- 1. TOP TRUST & UTILITY BAR -->
-  <div class="bg-[var(--clr-primary-1)] text-slate-100 text-xs border-b border-slate-700/60">
+  <div class="bg-[var(--clr-primary-2)] text-white text-xs border-b border-[var(--clr-primary-1)]/40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-wrap items-center justify-between gap-2">
       <div class="flex items-center gap-2 sm:gap-4 flex-wrap">
         <span class="inline-flex items-center gap-1.5 font-semibold text-[var(--clr-primary-6)]">
@@ -149,9 +182,10 @@
           <i class="fa-solid fa-palette text-[var(--clr-accent-gold)] text-[11px]"></i>
           <label for="theme-palette-select" class="sr-only">Кольорова палітра</label>
           <select id="theme-palette-select" class="bg-transparent text-white text-[11px] font-semibold focus:outline-none cursor-pointer">
-            <option value="original-green" class="text-slate-900">Колір: Оригінал (Смарагд)</option>
+            <option value="original-blue" class="text-slate-900" selected>Колір: Оригінал ПІФ (#339af0)</option>
+            <option value="original-green" class="text-slate-900">Колір: Смарагд</option>
             <option value="classic-teal" class="text-slate-900">Колір: Морська бірюза</option>
-            <option value="industrial-blue" class="text-slate-900">Колір: Класичний синій</option>
+            <option value="industrial-blue" class="text-slate-900">Колір: Navy / Sky</option>
           </select>
         </div>
         <button type="button" id="open-github-repo-modal-btn" class="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 text-white border border-white/20 px-2.5 py-1 rounded-md font-semibold transition-colors cursor-pointer" title="Інструкція та файли для нового GitHub репозиторію">
@@ -2891,15 +2925,15 @@ gh repo create pitftm-web-v2 --public --source=. --remote=origin --push</pre>
         }, true);
 
         // Theme Palette Switcher (Original Emerald Green default, Teal, or Classic Blue)
-        const savedTheme = safeGetLocal('pif-color-theme') || 'original-green';
+        const savedTheme = safeGetLocal('pif-color-theme-v2') || 'original-blue';
         document.documentElement.setAttribute('data-theme', savedTheme);
         const themeSel = document.getElementById('theme-palette-select');
         if (themeSel) {
           themeSel.value = savedTheme;
           themeSel.addEventListener('change', () => {
-            const val = themeSel.value || 'original-green';
+            const val = themeSel.value || 'original-blue';
             document.documentElement.setAttribute('data-theme', val);
-            safeSetLocal('pif-color-theme', val);
+            safeSetLocal('pif-color-theme-v2', val);
             showToast('Кольорову палітру оновлено!');
           });
         }
