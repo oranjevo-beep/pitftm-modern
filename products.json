@@ -2,7 +2,7 @@
   {
     "id": "p01",
     "name": "Засіб для миття та очищення ванних кімнат, душових кабінок, кранів",
-    "image": "./images/p01.jpg",
+    "image": "./images/product-2.webp",
     "fallbackImage": "./images/p01.jpg",
     "shortCategory": "Ванна та сантехніка",
     "categoryKey": "bath",
@@ -28,7 +28,7 @@
   {
     "id": "p02",
     "name": "Засіб для видалення забруднень каналізаційних труб та сифонів",
-    "image": "./images/p02.jpg",
+    "image": "./images/product-15.webp",
     "fallbackImage": "./images/p02.jpg",
     "shortCategory": "Труби та сифони",
     "categoryKey": "pipes",
@@ -54,7 +54,7 @@
   {
     "id": "p03",
     "name": "Засіб для видалення жиру, нагару та кіптяви",
-    "image": "./images/p03.jpg",
+    "image": "./images/product-3.webp",
     "fallbackImage": "./images/p03.jpg",
     "shortCategory": "Антижир та кухня",
     "categoryKey": "degreaser",
@@ -80,7 +80,7 @@
   {
     "id": "p04",
     "name": "Засіб для видалення жиру, нагару та кіптяви (Каністра 5л)",
-    "image": "./images/p04.jpg",
+    "image": "./images/product-11.webp",
     "fallbackImage": "./images/p04.jpg",
     "shortCategory": "Антижир та кухня",
     "categoryKey": "degreaser",
@@ -102,7 +102,7 @@
   {
     "id": "p05",
     "name": "Засіб для миття підлоги та інших поверхонь",
-    "image": "./images/p05.jpg",
+    "image": "./images/product-16.webp",
     "fallbackImage": "./images/p05.jpg",
     "shortCategory": "Підлога та поверхні",
     "categoryKey": "floors",
@@ -124,7 +124,7 @@
   {
     "id": "p06",
     "name": "Засіб для миття підлоги та інших поверхонь (Каністра 5л)",
-    "image": "./images/p06.jpg",
+    "image": "./images/product-10.webp",
     "fallbackImage": "./images/p06.jpg",
     "shortCategory": "Підлога та поверхні",
     "categoryKey": "floors",
@@ -146,7 +146,7 @@
   {
     "id": "p07",
     "name": "Гель для миття та очищення унітазів, раковин, кахельних та керамічних поверхонь",
-    "image": "./images/p07.jpg",
+    "image": "./images/product-1.webp",
     "fallbackImage": "./images/p07.jpg",
     "shortCategory": "Ванна та туалет",
     "categoryKey": "bath",
@@ -168,7 +168,7 @@
   {
     "id": "p08",
     "name": "Засіб для миття скла",
-    "image": "./images/p08.jpg",
+    "image": "./images/product-7.webp",
     "fallbackImage": "./images/p08.jpg",
     "shortCategory": "Скло та дзеркала",
     "categoryKey": "glass",
@@ -198,7 +198,7 @@
   {
     "id": "p09",
     "name": "Засіб для миття посуду з запахом яблука",
-    "image": "./images/p09.jpg",
+    "image": "./images/product-4.webp",
     "fallbackImage": "./images/p09.jpg",
     "shortCategory": "Посуд",
     "categoryKey": "dishes",
@@ -220,7 +220,7 @@
   {
     "id": "p10",
     "name": "Засіб для миття посуду з запахом лимона",
-    "image": "./images/p10.jpg",
+    "image": "./images/product-8.webp",
     "fallbackImage": "./images/p10.jpg",
     "shortCategory": "Посуд",
     "categoryKey": "dishes",
@@ -242,7 +242,7 @@
   {
     "id": "p11",
     "name": "Засіб для миття посуду з запахом яблука (Каністра 5л)",
-    "image": "./images/p11.jpg",
+    "image": "./images/product-9.webp",
     "fallbackImage": "./images/p11.jpg",
     "shortCategory": "Посуд",
     "categoryKey": "dishes",
@@ -264,7 +264,7 @@
   {
     "id": "p12",
     "name": "Засіб для миття посуду з запахом лимона (Каністра 5л)",
-    "image": "./images/p12.jpg",
+    "image": "./images/product-12.webp",
     "fallbackImage": "./images/p12.jpg",
     "shortCategory": "Посуд",
     "categoryKey": "dishes",
@@ -286,7 +286,7 @@
   {
     "id": "p13",
     "name": "Мило рідке «Морська свіжість»",
-    "image": "./images/p13.jpg",
+    "image": "./images/product-13.webp",
     "fallbackImage": "./images/p13.jpg",
     "shortCategory": "Рідке мило",
     "categoryKey": "soap",
@@ -308,7 +308,7 @@
   {
     "id": "p14",
     "name": "Мило рідке «Жожоба»",
-    "image": "./images/p14.jpg",
+    "image": "./images/product-14.webp",
     "fallbackImage": "./images/p14.jpg",
     "shortCategory": "Рідке мило",
     "categoryKey": "soap",

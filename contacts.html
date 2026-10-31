@@ -2,7 +2,8 @@
 <html lang="uk" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#339af0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>ТМ «ПІФ» — Побутова та професійна хімія від виробника (з 2005 року)</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,14 +19,16 @@
           },
           colors: {
             pif: {
-              50: '#f0f7ff',
-              100: '#e0effe',
-              200: '#bae0fd',
-              500: '#0284c7',
-              600: '#0369a1',
-              700: '#0a4d8c',
-              800: '#073b6d',
-              900: '#0c2d4e',
+              50: '#e7f5ff',
+              100: '#d0ebff',
+              200: '#a5d8ff',
+              300: '#74c0fc',
+              400: '#4dabf7',
+              500: '#339af0',
+              600: '#228be6',
+              700: '#1c7ed6',
+              800: '#1971c2',
+              900: '#1864ab',
             }
           }
         }
@@ -33,48 +36,74 @@
     };
   </script>
   <style>
+    :root {
+      --pif-blue: #339af0;
+      --pif-blue-hover: #1c7ed6;
+      --pif-blue-soft: #e7f5ff;
+      --pif-ink: #1c2430;
+      --pif-muted: #5c6775;
+      --pif-line: #e6e8ec;
+      --pif-surface: #f8fafc;
+      --pif-white: #ffffff;
+    }
+    html {
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
     body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background-color: #f4f7fa;
-      color: #0f172a;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--pif-surface);
+      color: var(--pif-ink);
       overflow-x: hidden;
     }
-    .tabular-nums {
-      font-variant-numeric: tabular-nums;
-    }
+    .tabular-nums { font-variant-numeric: tabular-nums; }
     .accordion-content {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.28s cubic-bezier(0.4, 0, 0.2, 1), padding 0.2s ease;
     }
-    .accordion-content.open {
-      max-height: 460px;
-    }
+    .accordion-content.open { max-height: 520px; }
     .product-card-shadow {
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 4px 12px rgba(15, 23, 42, 0.04);
+      box-shadow: 0 1px 3px rgba(28, 36, 48, 0.06), 0 4px 12px rgba(28, 36, 48, 0.04);
       transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
     .product-card-shadow:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 25px -5px rgba(10, 77, 140, 0.12), 0 4px 10px -2px rgba(15, 23, 42, 0.05);
-      border-color: #bae0fd;
+      box-shadow: 0 10px 25px -5px rgba(51, 154, 240, 0.18), 0 4px 10px -2px rgba(28, 36, 48, 0.05);
+      border-color: #a5d8ff;
     }
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
+    .product-img-well {
+      background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
     }
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
+    .product-img-well img {
+      width: 100%;
+      height: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      object-position: center;
+      padding: 0.75rem;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .min-tap { min-height: 44px; min-width: 44px; }
+    @supports (padding: max(0px)) {
+      .safe-fab { bottom: max(1.25rem, env(safe-area-inset-bottom)); right: max(1.25rem, env(safe-area-inset-right)); }
+      .safe-header { padding-left: max(1rem, env(safe-area-inset-left)); padding-right: max(1rem, env(safe-area-inset-right)); }
+    }
+    @media (max-width: 390px) {
+      #hero-section h1 { font-size: 1.55rem; line-height: 1.2; }
+      #products-grid { gap: 0.85rem; }
+      .product-img-well { min-height: 200px; }
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col bg-[#f4f7fa] text-slate-900 selection:bg-sky-600 selection:text-white">
+<body class="min-h-screen flex flex-col bg-[#f8fafc] text-slate-900 selection:bg-pif-500 selection:text-white">
 
   <!-- 1. TOP TRUST & UTILITY BAR -->
-  <div class="bg-[#0c2d4e] text-slate-100 text-xs border-b border-slate-700/60">
+  <div class="bg-[#339af0] text-white text-xs border-b border-[#1c7ed6]/60">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-wrap items-center justify-between gap-2">
       <div class="flex items-center gap-2 sm:gap-4 flex-wrap">
-        <span class="inline-flex items-center gap-1.5 font-semibold text-sky-300">
+        <span class="inline-flex items-center gap-1.5 font-semibold text-white">
           <i class="fa-solid fa-industry"></i>
           ТМ «ПІФ» — Виробник в Україні з 2005 року
         </span>
@@ -86,13 +115,13 @@
       </div>
 
       <div class="flex items-center gap-3 sm:gap-4 ml-auto">
-        <a href="tel:+380487017029" class="hover:text-sky-300 transition-colors hidden sm:inline-flex items-center gap-1.5 tabular-nums">
-          <i class="fa-solid fa-phone-volume text-sky-400"></i> (048) 701-70-29
+        <a href="tel:+380487017029" class="hover:text-pif-300 transition-colors hidden sm:inline-flex items-center gap-1.5 tabular-nums">
+          <i class="fa-solid fa-phone-volume text-pif-400"></i> (048) 701-70-29
         </a>
-        <a href="tel:+380679720560" class="hover:text-sky-300 transition-colors inline-flex items-center gap-1.5 font-medium tabular-nums">
-          <i class="fa-solid fa-mobile-screen text-sky-400"></i> +380 67 972 05 60
+        <a href="tel:+380679720560" class="hover:text-pif-300 transition-colors inline-flex items-center gap-1.5 font-medium tabular-nums">
+          <i class="fa-solid fa-mobile-screen text-pif-400"></i> +380 67 972 05 60
         </a>
-        <button type="button" id="top-price-editor-btn" class="inline-flex items-center gap-1.5 bg-sky-600/30 hover:bg-sky-500/40 text-sky-200 border border-sky-400/30 px-2.5 py-1 rounded-md font-semibold transition-colors cursor-pointer">
+        <button type="button" id="top-price-editor-btn" class="inline-flex items-center gap-1.5 bg-white/15 hover:bg-white/25 text-white border border-white/30 px-2.5 py-1.5 min-h-[36px] rounded-md font-semibold transition-colors cursor-pointer">
           <i class="fa-solid fa-sliders"></i>
           <span id="top-price-editor-label">Редактор цін</span>
         </button>
@@ -104,28 +133,28 @@
   <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3">
       <a href="#hero-section" class="flex items-center gap-3 group shrink-0">
-        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-[#0a4d8c] to-[#0284c7] flex flex-col items-center justify-center text-white shadow-sm group-hover:shadow-md transition-all shrink-0 border border-sky-400/30">
+        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-[#339af0] to-[#339af0] flex flex-col items-center justify-center text-white shadow-sm group-hover:shadow-md transition-all shrink-0 border border-pif-400/30">
           <span class="font-extrabold text-base sm:text-lg tracking-tight leading-none">ПІФ</span>
-          <span class="text-[9px] font-semibold tracking-widest uppercase text-sky-200 mt-0.5">TM · 2005</span>
+          <span class="text-[9px] font-semibold tracking-widest uppercase text-pif-200 mt-0.5">TM · 2005</span>
         </div>
         <div class="flex flex-col">
           <div class="flex items-center gap-2">
             <span class="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900">ТМ «ПІФ»</span>
-            <span class="hidden sm:inline-block text-[11px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-sky-50 text-sky-800 border border-sky-200">Одеса · UA</span>
+            <span class="hidden sm:inline-block text-[11px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-pif-50 text-pif-800 border border-pif-200">Одеса · UA</span>
           </div>
           <span class="text-xs text-slate-500 font-medium">Побутова та професійна хімія</span>
         </div>
       </a>
 
       <nav class="hidden lg:flex items-center gap-1 xl:gap-2" aria-label="Головна навігація">
-        <a href="#hero-section" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-sky-700 hover:bg-slate-100/80 transition-colors">Головна</a>
-        <a href="#catalog-section" class="px-3 py-2 rounded-lg text-sm font-semibold text-sky-700 bg-sky-50/80 hover:bg-sky-100/80 transition-colors flex items-center gap-1.5">
+        <a href="#hero-section" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-pif-700 hover:bg-slate-100/80 transition-colors">Головна</a>
+        <a href="#catalog-section" class="px-3 py-2 rounded-lg text-sm font-semibold text-pif-700 bg-pif-50/80 hover:bg-pif-100/80 transition-colors flex items-center gap-1.5">
           Каталог і ціни
-          <span class="text-xs bg-sky-600 text-white px-1.5 py-0.2 rounded-full tabular-nums">14</span>
+          <span class="text-xs bg-pif-600 text-white px-1.5 py-0.2 rounded-full tabular-nums">14</span>
         </a>
-        <a href="#b2b-section" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-sky-700 hover:bg-slate-100/80 transition-colors">Опт / Private Label</a>
-        <a href="#about-section" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-sky-700 hover:bg-slate-100/80 transition-colors">Про виробника</a>
-        <a href="#contacts-section" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-sky-700 hover:bg-slate-100/80 transition-colors">Контакти</a>
+        <a href="#b2b-section" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-pif-700 hover:bg-slate-100/80 transition-colors">Опт / Private Label</a>
+        <a href="#about-section" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-pif-700 hover:bg-slate-100/80 transition-colors">Про виробника</a>
+        <a href="#contacts-section" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-pif-700 hover:bg-slate-100/80 transition-colors">Контакти</a>
       </nav>
 
       <div class="flex items-center gap-2 sm:gap-2.5">
@@ -139,9 +168,9 @@
         </div>
 
         <button type="button" id="open-quote-drawer-btn" class="relative inline-flex items-center gap-2 px-3 sm:px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200/80 text-slate-800 text-xs sm:text-sm font-semibold border border-slate-200/80 transition-colors cursor-pointer">
-          <i class="fa-solid fa-clipboard-list text-sky-700"></i>
+          <i class="fa-solid fa-clipboard-list text-pif-700"></i>
           <span class="hidden md:inline">Заявка</span>
-          <span id="quote-count-badge" class="px-1.5 py-0.5 text-xs rounded-full bg-sky-700 text-white font-bold tabular-nums">0</span>
+          <span id="quote-count-badge" class="px-1.5 py-0.5 text-xs rounded-full bg-pif-700 text-white font-bold tabular-nums">0</span>
         </button>
 
         <a href="https://api.whatsapp.com/send?phone=380679720560" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-semibold shadow-sm transition-all">
@@ -149,7 +178,7 @@
           <span class="hidden sm:inline">WhatsApp</span>
         </a>
 
-        <button type="button" id="mobile-menu-btn" aria-label="Відкрити меню" class="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 border border-slate-200 cursor-pointer">
+        <button type="button" id="mobile-menu-btn" aria-label="Відкрити меню" class="lg:hidden min-tap inline-flex items-center justify-center p-2.5 rounded-lg text-slate-700 hover:bg-slate-100 border border-slate-200 cursor-pointer">
           <i class="fa-solid fa-bars text-lg"></i>
         </button>
       </div>
@@ -159,15 +188,15 @@
       <div class="flex items-center justify-between bg-slate-50 p-2 rounded-lg border border-slate-200 mb-2">
         <span class="text-xs font-semibold text-slate-600">Тип цін у каталозі:</span>
         <div class="flex gap-1">
-          <button type="button" id="mob-mode-retail-btn" class="px-2.5 py-1 rounded bg-sky-700 text-white text-xs font-semibold">Роздріб</button>
+          <button type="button" id="mob-mode-retail-btn" class="px-2.5 py-1 rounded bg-pif-700 text-white text-xs font-semibold">Роздріб</button>
           <button type="button" id="mob-mode-b2b-btn" class="px-2.5 py-1 rounded bg-white text-slate-700 border border-slate-300 text-xs font-semibold">Опт B2B (-12%)</button>
         </div>
       </div>
-      <a href="#hero-section" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-semibold text-slate-800 hover:bg-sky-50">Головна</a>
-      <a href="#catalog-section" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-semibold text-sky-700 bg-sky-50">Каталог продукції (14)</a>
-      <a href="#b2b-section" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-semibold text-slate-800 hover:bg-sky-50">Опт / HoReCa & Private Label</a>
-      <a href="#about-section" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-semibold text-slate-800 hover:bg-sky-50">Про виробника</a>
-      <a href="#contacts-section" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm font-semibold text-slate-800 hover:bg-sky-50">Контакти</a>
+      <a href="#hero-section" class="mobile-nav-link block px-3 py-3 min-h-[44px] rounded-lg text-sm font-semibold text-slate-800 hover:bg-pif-50">Головна</a>
+      <a href="#catalog-section" class="mobile-nav-link block px-3 py-3 min-h-[44px] rounded-lg text-sm font-semibold text-pif-700 bg-pif-50">Каталог продукції (14)</a>
+      <a href="#b2b-section" class="mobile-nav-link block px-3 py-3 min-h-[44px] rounded-lg text-sm font-semibold text-slate-800 hover:bg-pif-50">Опт / HoReCa & Private Label</a>
+      <a href="#about-section" class="mobile-nav-link block px-3 py-3 min-h-[44px] rounded-lg text-sm font-semibold text-slate-800 hover:bg-pif-50">Про виробника</a>
+      <a href="#contacts-section" class="mobile-nav-link block px-3 py-3 min-h-[44px] rounded-lg text-sm font-semibold text-slate-800 hover:bg-pif-50">Контакти</a>
       <button type="button" id="mob-open-editor-btn" class="w-full mt-2 inline-flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg bg-slate-900 text-white text-xs font-semibold">
         <i class="fa-solid fa-sliders"></i> Відкрити Редактор цін
       </button>
@@ -176,18 +205,18 @@
 
   <main class="flex-1">
     <!-- 3. CONTAINED SPLIT HERO SECTION -->
-    <section id="hero-section" class="bg-gradient-to-b from-white via-[#f4f7fa] to-[#eef4f9] border-b border-slate-200/80 py-8 sm:py-12 lg:py-14">
+    <section id="hero-section" class="bg-gradient-to-b from-white via-[#f8fafc] to-[#e7f5ff] border-b border-slate-200/80 py-8 sm:py-12 lg:py-14">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           
           <div class="lg:col-span-7 space-y-5">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-100/80 border border-sky-200 text-sky-900 text-xs font-semibold">
-              <span class="w-2 h-2 rounded-full bg-sky-600"></span>
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-pif-100/80 border border-pif-200 text-pif-900 text-xs font-semibold">
+              <span class="w-2 h-2 rounded-full bg-pif-600"></span>
               ВИРОБНИК ПОБУТОВОЇ ТА ПРОМИСЛОВОЇ ХІМІЇ · З 2005 РОКУ
             </div>
 
             <h1 class="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-slate-900 tracking-tight leading-[1.15]">
-              Професійна чистота для дому, <span class="text-[#0a4d8c]">HoReCa та бізнесу</span> напряму від заводу
+              Професійна чистота для дому, <span class="text-[#339af0]">HoReCa та бізнесу</span> напряму від заводу
             </h1>
 
             <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl">
@@ -195,36 +224,36 @@
             </p>
 
             <div class="flex flex-wrap items-center gap-3 pt-1">
-              <a href="#catalog-section" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#0a4d8c] hover:bg-[#073b6d] text-white font-semibold text-sm sm:text-base shadow-sm transition-all">
+              <a href="#catalog-section" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#339af0] hover:bg-[#1c7ed6] text-white font-semibold text-sm sm:text-base shadow-sm transition-all">
                 <i class="fa-solid fa-flask"></i>
                 Переглянути каталог і ціни
                 <i class="fa-solid fa-arrow-down text-xs"></i>
               </a>
               <button type="button" id="hero-download-csv-btn" class="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-semibold text-sm sm:text-base border border-slate-300 shadow-sm transition-all cursor-pointer">
-                <i class="fa-solid fa-file-arrow-down text-sky-700"></i>
+                <i class="fa-solid fa-file-arrow-down text-pif-700"></i>
                 Завантажити прайс (CSV)
               </button>
-              <button type="button" id="hero-edit-prices-btn" class="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-sky-50 hover:bg-sky-100 text-sky-900 font-semibold text-sm border border-sky-200 transition-all cursor-pointer">
-                <i class="fa-solid fa-pen-to-square text-sky-700"></i>
+              <button type="button" id="hero-edit-prices-btn" class="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-pif-50 hover:bg-pif-100 text-pif-900 font-semibold text-sm border border-pif-200 transition-all cursor-pointer">
+                <i class="fa-solid fa-pen-to-square text-pif-700"></i>
                 Змінити ціни
               </button>
             </div>
 
             <div class="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
               <div class="bg-white/90 p-3 rounded-xl border border-slate-200/80 shadow-sm">
-                <div class="text-lg sm:text-xl font-extrabold text-[#0a4d8c] tabular-nums">З 2005 р.</div>
+                <div class="text-lg sm:text-xl font-extrabold text-[#339af0] tabular-nums">З 2005 р.</div>
                 <div class="text-xs text-slate-600 font-medium mt-0.5">Власне виробництво в Україні</div>
               </div>
               <div class="bg-white/90 p-3 rounded-xl border border-slate-200/80 shadow-sm">
-                <div class="text-lg sm:text-xl font-extrabold text-[#0a4d8c] tabular-nums">14 SKU</div>
+                <div class="text-lg sm:text-xl font-extrabold text-[#339af0] tabular-nums">14 SKU</div>
                 <div class="text-xs text-slate-600 font-medium mt-0.5">Повний спектр мийних засобів</div>
               </div>
               <div class="bg-white/90 p-3 rounded-xl border border-slate-200/80 shadow-sm">
-                <div class="text-lg sm:text-xl font-extrabold text-[#0a4d8c] tabular-nums">500мл – 5л</div>
+                <div class="text-lg sm:text-xl font-extrabold text-[#339af0] tabular-nums">500мл – 5л</div>
                 <div class="text-xs text-slate-600 font-medium mt-0.5">Тара для дому та HoReCa</div>
               </div>
               <div class="bg-white/90 p-3 rounded-xl border border-slate-200/80 shadow-sm">
-                <div class="text-lg sm:text-xl font-extrabold text-[#0a4d8c]">Private Label</div>
+                <div class="text-lg sm:text-xl font-extrabold text-[#339af0]">Private Label</div>
                 <div class="text-xs text-slate-600 font-medium mt-0.5">Виробництво під СТМ (ТМ «КОПІЙКА»)</div>
               </div>
             </div>
@@ -232,11 +261,11 @@
 
           <div class="lg:col-span-5">
             <div class="bg-white rounded-2xl p-3 sm:p-4 border border-slate-200/90 shadow-md">
-              <div class="relative rounded-xl overflow-hidden bg-[#e8f1f8]">
+              <div class="relative rounded-xl overflow-hidden bg-[#e7f5ff]">
                 <img
                   src="./images/opt_hero.jpg"
                   alt="Лінійка засобів побутової та професійної хімії ТМ ПІФ — флакони 500 мл, 1 л та каністра 5 л"
-                  class="w-full h-auto object-cover block"
+                  class="w-full h-auto object-contain block bg-[#e7f5ff]"
                 />
                 <div class="absolute top-3 left-3 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-slate-200 shadow-sm flex items-center gap-2">
                   <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
@@ -245,7 +274,7 @@
               </div>
               <div class="mt-3 pt-2 px-1 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-600">
                 <div class="flex items-center gap-2 font-semibold text-slate-800">
-                  <i class="fa-solid fa-flask-vial text-sky-700"></i>
+                  <i class="fa-solid fa-flask-vial text-pif-700"></i>
                   <span>Контроль якості кожної партії</span>
                 </div>
                 <span class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md font-semibold tabular-nums">Від 25.80 грн</span>
@@ -258,7 +287,7 @@
     </section>
 
     <!-- 4. OWNER INLINE PRICE EDITOR TOOLBAR -->
-    <section id="inline-editor-banner" class="hidden bg-gradient-to-r from-slate-900 via-[#0c2d4e] to-slate-900 text-white border-b border-sky-500/40 shadow-md">
+    <section id="inline-editor-banner" class="hidden bg-gradient-to-r from-slate-900 via-[#1864ab] to-slate-900 text-white border-b border-pif-500/40 shadow-md">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
         <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
           <div class="flex items-center gap-3">
@@ -268,7 +297,7 @@
             <div>
               <div class="flex items-center gap-2 flex-wrap">
                 <h2 class="text-sm font-bold text-white">Режим власника: Керування цінами активний</h2>
-                <span class="text-[11px] bg-sky-500/30 border border-sky-400/40 text-sky-200 px-2 py-0.5 rounded-full font-semibold">Зміни миттєво оновлюють каталог</span>
+                <span class="text-[11px] bg-pif-500/30 border border-pif-400/40 text-pif-200 px-2 py-0.5 rounded-full font-semibold">Зміни миттєво оновлюють каталог</span>
               </div>
               <p class="text-xs text-slate-300 mt-0.5">
                 Редагуйте ціни прямо на картках товарів нижче або відкрийте табличний редактор для експорту <code class="text-amber-300 font-mono">products.json</code> у GitHub.
@@ -284,7 +313,7 @@
               <button type="button" data-bulk-pct="10" class="bulk-pct-btn px-2 py-1 rounded hover:bg-slate-700 text-emerald-300 font-semibold cursor-pointer">+10%</button>
             </div>
 
-            <button type="button" id="banner-open-drawer-btn" class="px-3 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-xs font-semibold transition-colors cursor-pointer">
+            <button type="button" id="banner-open-drawer-btn" class="px-3 py-1.5 rounded-lg bg-pif-600 hover:bg-pif-500 text-white text-xs font-semibold transition-colors cursor-pointer">
               <i class="fa-solid fa-table-list mr-1"></i> Таблиця всіх цін
             </button>
             <button type="button" id="banner-download-json-btn" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold transition-colors cursor-pointer">
@@ -307,7 +336,7 @@
         
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
           <div>
-            <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-sky-700 mb-1">
+            <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-pif-700 mb-1">
               <i class="fa-solid fa-boxes-stacked"></i> Офіційний каталог виробника
             </div>
             <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
@@ -320,11 +349,11 @@
 
           <div class="flex flex-wrap items-center gap-2 shrink-0">
             <button type="button" id="toggle-all-accordions-btn" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-xs font-semibold shadow-sm transition-colors cursor-pointer">
-              <i class="fa-solid fa-layer-group text-sky-700"></i>
+              <i class="fa-solid fa-layer-group text-pif-700"></i>
               <span id="toggle-all-accordions-text">Розгорнути всі описи</span>
             </button>
             <button type="button" id="catalog-edit-prices-btn" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold shadow-sm transition-colors cursor-pointer">
-              <i class="fa-solid fa-pen-to-square text-sky-400"></i>
+              <i class="fa-solid fa-pen-to-square text-pif-400"></i>
               Редагувати ціни
             </button>
           </div>
@@ -334,28 +363,28 @@
           <div>
             <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">Категорія за призначенням:</div>
             <div id="category-pills-container" class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
-              <button type="button" data-cat="all" class="cat-pill active shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-[#0a4d8c] text-white shadow-sm transition-all cursor-pointer">
+              <button type="button" data-cat="all" class="cat-pill active shrink-0 min-h-[44px] px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-[#339af0] text-white shadow-sm transition-all cursor-pointer">
                 Усі засоби <span class="ml-1 px-1.5 py-0.2 rounded-full bg-white/20 text-xs tabular-nums">14</span>
               </button>
-              <button type="button" data-cat="dishes" class="cat-pill shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 hover:bg-slate-200/80 text-slate-700 transition-all cursor-pointer">
+              <button type="button" data-cat="dishes" class="cat-pill shrink-0 min-h-[44px] px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 hover:bg-slate-200/80 text-slate-700 transition-all cursor-pointer">
                 🍽️ Миття посуду <span class="ml-1 text-xs text-slate-500 tabular-nums">(4)</span>
               </button>
-              <button type="button" data-cat="bath" class="cat-pill shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 hover:bg-slate-200/80 text-slate-700 transition-all cursor-pointer">
+              <button type="button" data-cat="bath" class="cat-pill shrink-0 min-h-[44px] px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 hover:bg-slate-200/80 text-slate-700 transition-all cursor-pointer">
                 🚿 Ванна та туалет <span class="ml-1 text-xs text-slate-500 tabular-nums">(2)</span>
               </button>
-              <button type="button" data-cat="degreaser" class="cat-pill shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 hover:bg-slate-200/80 text-slate-700 transition-all cursor-pointer">
+              <button type="button" data-cat="degreaser" class="cat-pill shrink-0 min-h-[44px] px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 hover:bg-slate-200/80 text-slate-700 transition-all cursor-pointer">
                 🔥 Антижир та нагар <span class="ml-1 text-xs text-slate-500 tabular-nums">(2)</span>
               </button>
-              <button type="button" data-cat="floors" class="cat-pill shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 hover:bg-slate-200/80 text-slate-700 transition-all cursor-pointer">
+              <button type="button" data-cat="floors" class="cat-pill shrink-0 min-h-[44px] px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 hover:bg-slate-200/80 text-slate-700 transition-all cursor-pointer">
                 🧹 Підлога та стіни <span class="ml-1 text-xs text-slate-500 tabular-nums">(2)</span>
               </button>
-              <button type="button" data-cat="pipes" class="cat-pill shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 hover:bg-slate-200/80 text-slate-700 transition-all cursor-pointer">
+              <button type="button" data-cat="pipes" class="cat-pill shrink-0 min-h-[44px] px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 hover:bg-slate-200/80 text-slate-700 transition-all cursor-pointer">
                 🔧 Труби та сифони <span class="ml-1 text-xs text-slate-500 tabular-nums">(1)</span>
               </button>
-              <button type="button" data-cat="glass" class="cat-pill shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 hover:bg-slate-200/80 text-slate-700 transition-all cursor-pointer">
+              <button type="button" data-cat="glass" class="cat-pill shrink-0 min-h-[44px] px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 hover:bg-slate-200/80 text-slate-700 transition-all cursor-pointer">
                 🪟 Скло та дзеркала <span class="ml-1 text-xs text-slate-500 tabular-nums">(1)</span>
               </button>
-              <button type="button" data-cat="soap" class="cat-pill shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 hover:bg-slate-200/80 text-slate-700 transition-all cursor-pointer">
+              <button type="button" data-cat="soap" class="cat-pill shrink-0 min-h-[44px] px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 hover:bg-slate-200/80 text-slate-700 transition-all cursor-pointer">
                 🫧 Рідке мило 5л <span class="ml-1 text-xs text-slate-500 tabular-nums">(2)</span>
               </button>
             </div>
@@ -368,7 +397,7 @@
                 type="text"
                 id="catalog-search-input"
                 placeholder="Пошук за назвою, призначенням, складом (напр. іржа, 5л, яблуко)..."
-                class="w-full pl-9 pr-8 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-sky-600 transition-colors"
+                class="w-full pl-9 pr-8 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-pif-600 transition-colors"
               />
               <button type="button" id="clear-search-btn" aria-label="Очистити пошук" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 cursor-pointer">
                 <i class="fa-solid fa-circle-xmark"></i>
@@ -389,7 +418,7 @@
 
             <div class="md:col-span-3 flex items-center gap-2">
               <label for="catalog-sort-select" class="text-xs font-semibold text-slate-500 shrink-0">Сортувати:</label>
-              <select id="catalog-sort-select" class="w-full py-2 px-3 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm font-medium text-slate-800 focus:outline-none focus:border-sky-600 cursor-pointer">
+              <select id="catalog-sort-select" class="w-full py-2 px-3 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm font-medium text-slate-800 focus:outline-none focus:border-pif-600 cursor-pointer">
                 <option value="default">За каталогом (p01–p14)</option>
                 <option value="price-asc">Ціна: від найнижчої</option>
                 <option value="price-desc">Ціна: від найвищої</option>
@@ -404,12 +433,12 @@
             Показано <strong id="visible-products-count" class="text-slate-800 tabular-nums">14</strong> з 14 позицій каталогу
             <span id="price-mode-indicator" class="ml-2 inline-flex items-center px-2 py-0.5 rounded bg-slate-200/80 text-slate-700 font-semibold">Роздрібний прайс</span>
           </div>
-          <button type="button" id="reset-catalog-filters-btn" class="hidden text-sky-700 hover:text-sky-900 font-semibold cursor-pointer">
+          <button type="button" id="reset-catalog-filters-btn" class="hidden text-pif-700 hover:text-pif-900 font-semibold cursor-pointer">
             <i class="fa-solid fa-rotate-left mr-1"></i> Скинути всі фільтри
           </button>
         </div>
 
-        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6"></div>
+        <div id="products-grid" class="grid grid-cols-1 min-[380px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5 sm:gap-5 lg:gap-6"></div>
 
         <div id="catalog-empty-state" class="hidden bg-white rounded-2xl p-10 text-center border border-slate-200 my-4">
           <div class="w-12 h-12 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-3 text-xl">
@@ -417,7 +446,7 @@
           </div>
           <h3 class="text-base font-bold text-slate-800">За вашим запитом засобів не знайдено</h3>
           <p class="text-xs text-slate-500 mt-1 max-w-md mx-auto">Спробуйте змінити категорію, обрати інший об’єм тари або очистити поле пошуку.</p>
-          <button type="button" id="empty-reset-btn" class="mt-4 px-4 py-2 rounded-xl bg-[#0a4d8c] text-white text-xs font-semibold cursor-pointer">
+          <button type="button" id="empty-reset-btn" class="mt-4 px-4 py-2 rounded-xl bg-[#339af0] text-white text-xs font-semibold cursor-pointer">
             Показати всі 14 засобів
           </button>
         </div>
@@ -432,7 +461,7 @@
           
           <div class="lg:col-span-7 space-y-6">
             <div>
-              <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-sky-700 mb-1">
+              <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-pif-700 mb-1">
                 <i class="fa-solid fa-handshake"></i> Співпраця з бізнесом та дистриб’юторами
               </div>
               <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
@@ -444,8 +473,8 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="p-4 rounded-2xl bg-[#f4f7fa] border border-slate-200/80">
-                <div class="w-9 h-9 rounded-lg bg-[#0a4d8c] text-white flex items-center justify-center mb-3 text-sm">
+              <div class="p-4 rounded-2xl bg-[#f8fafc] border border-slate-200/80">
+                <div class="w-9 h-9 rounded-lg bg-[#339af0] text-white flex items-center justify-center mb-3 text-sm">
                   <i class="fa-solid fa-tags"></i>
                 </div>
                 <h3 class="text-base font-bold text-slate-900">Контрактне виробництво (СТМ)</h3>
@@ -454,8 +483,8 @@
                 </p>
               </div>
 
-              <div class="p-4 rounded-2xl bg-[#f4f7fa] border border-slate-200/80">
-                <div class="w-9 h-9 rounded-lg bg-sky-600 text-white flex items-center justify-center mb-3 text-sm">
+              <div class="p-4 rounded-2xl bg-[#f8fafc] border border-slate-200/80">
+                <div class="w-9 h-9 rounded-lg bg-pif-600 text-white flex items-center justify-center mb-3 text-sm">
                   <i class="fa-solid fa-jug-detergent"></i>
                 </div>
                 <h3 class="text-base font-bold text-slate-900">Професійна тара 5 л (HoReCa)</h3>
@@ -464,7 +493,7 @@
                 </p>
               </div>
 
-              <div class="p-4 rounded-2xl bg-[#f4f7fa] border border-slate-200/80">
+              <div class="p-4 rounded-2xl bg-[#f8fafc] border border-slate-200/80">
                 <div class="w-9 h-9 rounded-lg bg-emerald-600 text-white flex items-center justify-center mb-3 text-sm">
                   <i class="fa-solid fa-file-shield"></i>
                 </div>
@@ -474,7 +503,7 @@
                 </p>
               </div>
 
-              <div class="p-4 rounded-2xl bg-[#f4f7fa] border border-slate-200/80">
+              <div class="p-4 rounded-2xl bg-[#f8fafc] border border-slate-200/80">
                 <div class="w-9 h-9 rounded-lg bg-amber-600 text-white flex items-center justify-center mb-3 text-sm">
                   <i class="fa-solid fa-truck-fast"></i>
                 </div>
@@ -486,13 +515,13 @@
             </div>
           </div>
 
-          <div class="lg:col-span-5 bg-[#0c2d4e] text-white rounded-2xl p-5 sm:p-6 shadow-lg border border-sky-400/20">
+          <div class="lg:col-span-5 bg-[#1864ab] text-white rounded-2xl p-5 sm:p-6 shadow-lg border border-pif-400/20">
             <div class="flex items-center justify-between gap-2 pb-4 border-b border-slate-700">
               <div>
-                <span class="text-[11px] font-bold uppercase tracking-wider text-sky-300">Калькулятор вигоди HoReCa</span>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-pif-300">Калькулятор вигоди HoReCa</span>
                 <h3 class="text-lg font-extrabold mt-0.5">Економія при переході на каністри 5 л</h3>
               </div>
-              <span class="w-10 h-10 rounded-xl bg-sky-500/20 border border-sky-400/30 flex items-center justify-center text-sky-300">
+              <span class="w-10 h-10 rounded-xl bg-pif-500/20 border border-pif-400/30 flex items-center justify-center text-pif-300">
                 <i class="fa-solid fa-calculator"></i>
               </span>
             </div>
@@ -500,7 +529,7 @@
             <div class="space-y-4 pt-4">
               <div>
                 <label for="calc-product-select" class="block text-xs font-semibold text-slate-300 mb-1.5">Оберіть продукт для порівняння (500 мл vs 5 л):</label>
-                <select id="calc-product-select" class="w-full px-3 py-2.5 rounded-xl bg-slate-800 border border-slate-600 text-sm text-white font-medium focus:outline-none focus:border-sky-400 cursor-pointer">
+                <select id="calc-product-select" class="w-full px-3 py-2.5 rounded-xl bg-slate-800 border border-slate-600 text-sm text-white font-medium focus:outline-none focus:border-pif-400 cursor-pointer">
                   <option value="glass">Засіб для миття скла (500мл спрей vs 5л каністра)</option>
                   <option value="dish">Засіб для миття посуду Яблуко/Лимон (500мл vs 5л)</option>
                   <option value="bath">Засіб для ванних кімнат і кранів (500мл vs 5л)</option>
@@ -511,9 +540,9 @@
               <div>
                 <div class="flex justify-between text-xs font-semibold mb-1.5">
                   <span class="text-slate-300">Потреба вашого закладу на місяць:</span>
-                  <span class="text-sky-300 font-bold tabular-nums"><span id="calc-liters-label">20</span> літрів / міс. (<span id="calc-canisters-label">4</span> каністри 5л)</span>
+                  <span class="text-pif-300 font-bold tabular-nums"><span id="calc-liters-label">20</span> літрів / міс. (<span id="calc-canisters-label">4</span> каністри 5л)</span>
                 </div>
-                <input type="range" id="calc-liters-slider" min="5" max="100" step="5" value="20" class="w-full accent-sky-400 cursor-pointer" />
+                <input type="range" id="calc-liters-slider" min="5" max="100" step="5" value="20" class="w-full accent-pif-400 cursor-pointer" />
                 <div class="flex justify-between text-[11px] text-slate-400 tabular-nums mt-1">
                   <span>5 л (1 каністра)</span>
                   <span>50 л (10 каністр)</span>
@@ -527,10 +556,10 @@
                   <div id="calc-small-cost" class="text-base sm:text-lg font-bold text-slate-200 tabular-nums mt-0.5">1 272.00 грн</div>
                   <div id="calc-small-per-l" class="text-[11px] text-slate-400 tabular-nums">63.60 грн / літр</div>
                 </div>
-                <div class="bg-sky-900/60 p-3 rounded-xl border border-sky-400/40">
-                  <div class="text-[11px] text-sky-200">У каністрах 5 л ТМ «ПІФ»:</div>
+                <div class="bg-pif-900/60 p-3 rounded-xl border border-pif-400/40">
+                  <div class="text-[11px] text-pif-200">У каністрах 5 л ТМ «ПІФ»:</div>
                   <div id="calc-bulk-cost" class="text-base sm:text-lg font-extrabold text-white tabular-nums mt-0.5">482.40 грн</div>
-                  <div id="calc-bulk-per-l" class="text-[11px] text-sky-300 tabular-nums">24.12 грн / літр</div>
+                  <div id="calc-bulk-per-l" class="text-[11px] text-pif-300 tabular-nums">24.12 грн / літр</div>
                 </div>
               </div>
 
@@ -544,7 +573,7 @@
                 </div>
               </div>
 
-              <a href="#contacts-section" class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition-colors">
+              <a href="#contacts-section" class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-pif-500 hover:bg-pif-400 text-slate-950 font-bold text-sm transition-colors">
                 Замовити оптовий прайс та зразки
                 <i class="fa-solid fa-arrow-right text-xs"></i>
               </a>
@@ -556,12 +585,12 @@
     </section>
 
     <!-- 7. ABOUT THE MANUFACTURER SECTION -->
-    <section id="about-section" class="py-12 sm:py-16 bg-[#f4f7fa]">
+    <section id="about-section" class="py-12 sm:py-16 bg-[#f8fafc]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-sm">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div class="lg:col-span-7 space-y-4">
-              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-50 text-sky-800 border border-sky-200 text-xs font-bold">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pif-50 text-pif-800 border border-pif-200 text-xs font-bold">
                 ІСТОРІЯ ТА ЯКІСТЬ · ТОВ «КОДИМСЬКИЙ РАЙПОСТАЧ»
               </div>
               <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
@@ -577,7 +606,7 @@
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
                 <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/70">
                   <div class="font-bold text-slate-900 text-sm flex items-center gap-2">
-                    <i class="fa-solid fa-check-double text-sky-600"></i> Перевірені формули
+                    <i class="fa-solid fa-check-double text-pif-600"></i> Перевірені формули
                   </div>
                   <p class="text-xs text-slate-600 mt-1">Ефективно видаляють вапняний наліт, іржу, застарілий жир та білкові забруднення.</p>
                 </div>
@@ -597,22 +626,22 @@
             </div>
 
             <div class="lg:col-span-5 grid grid-cols-2 gap-3.5">
-              <div class="bg-[#f4f7fa] p-3 rounded-2xl border border-slate-200 text-center">
+              <div class="bg-[#f8fafc] p-3 rounded-2xl border border-slate-200 text-center">
                 <img src="./images/p01.jpg" alt="Засіб для ванних кімнат ТМ ПІФ" class="w-full h-40 object-contain rounded-xl bg-white p-2" />
                 <div class="text-xs font-bold text-slate-800 mt-2">Догляд за сантехнікою</div>
                 <div class="text-[11px] text-slate-500">Антиналіт та WC-гелі</div>
               </div>
-              <div class="bg-[#f4f7fa] p-3 rounded-2xl border border-slate-200 text-center">
+              <div class="bg-[#f8fafc] p-3 rounded-2xl border border-slate-200 text-center">
                 <img src="./images/p08.jpg" alt="Засіб для миття скла ТМ ПІФ" class="w-full h-40 object-contain rounded-xl bg-white p-2" />
                 <div class="text-xs font-bold text-slate-800 mt-2">Скло та вітрини</div>
                 <div class="text-[11px] text-slate-500">Без смуг та розводів</div>
               </div>
-              <div class="bg-[#f4f7fa] p-3 rounded-2xl border border-slate-200 text-center">
+              <div class="bg-[#f8fafc] p-3 rounded-2xl border border-slate-200 text-center">
                 <img src="./images/p09.jpg" alt="Засіб для миття посуду ТМ ПІФ" class="w-full h-40 object-contain rounded-xl bg-white p-2" />
                 <div class="text-xs font-bold text-slate-800 mt-2">Миття посуду</div>
                 <div class="text-[11px] text-slate-500">Яблуко та Лимон 500мл / 5л</div>
               </div>
-              <div class="bg-[#f4f7fa] p-3 rounded-2xl border border-slate-200 text-center">
+              <div class="bg-[#f8fafc] p-3 rounded-2xl border border-slate-200 text-center">
                 <img src="./images/p04.jpg" alt="Професійна каністра 5л ТМ ПІФ" class="w-full h-40 object-contain rounded-xl bg-white p-2" />
                 <div class="text-xs font-bold text-slate-800 mt-2">Лінійка HoReCa 5 л</div>
                 <div class="text-[11px] text-slate-500">Антижир, підлога, мило</div>
@@ -630,7 +659,7 @@
           
           <div class="lg:col-span-5 space-y-5">
             <div>
-              <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-sky-700 mb-1">
+              <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-pif-700 mb-1">
                 <i class="fa-solid fa-location-dot"></i> Відділ продажу та виробництво
               </div>
               <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
@@ -642,8 +671,8 @@
             </div>
 
             <div class="space-y-3">
-              <div class="p-4 rounded-2xl bg-[#f4f7fa] border border-slate-200/80 flex items-start gap-3.5">
-                <div class="w-10 h-10 rounded-xl bg-[#0a4d8c] text-white flex items-center justify-center shrink-0 mt-0.5">
+              <div class="p-4 rounded-2xl bg-[#f8fafc] border border-slate-200/80 flex items-start gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-[#339af0] text-white flex items-center justify-center shrink-0 mt-0.5">
                   <i class="fa-solid fa-building"></i>
                 </div>
                 <div>
@@ -653,13 +682,13 @@
                 </div>
               </div>
 
-              <div class="p-4 rounded-2xl bg-[#f4f7fa] border border-slate-200/80 flex items-start gap-3.5">
+              <div class="p-4 rounded-2xl bg-[#f8fafc] border border-slate-200/80 flex items-start gap-3.5">
                 <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 mt-0.5">
                   <i class="fa-brands fa-whatsapp text-lg"></i>
                 </div>
                 <div class="flex-1">
                   <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Мобільний та WhatsApp (Прийом замовлень)</div>
-                  <a href="tel:+380679720560" class="text-base font-extrabold text-slate-900 hover:text-sky-700 transition-colors tabular-nums block mt-0.5">
+                  <a href="tel:+380679720560" class="text-base font-extrabold text-slate-900 hover:text-pif-700 transition-colors tabular-nums block mt-0.5">
                     +380 67 972 05 60
                   </a>
                   <div class="flex flex-wrap gap-2 mt-2">
@@ -674,15 +703,15 @@
               </div>
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div class="p-4 rounded-2xl bg-[#f4f7fa] border border-slate-200/80">
+                <div class="p-4 rounded-2xl bg-[#f8fafc] border border-slate-200/80">
                   <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Тел. / факс (Одеса)</div>
-                  <a href="tel:+380487017029" class="text-sm font-extrabold text-slate-900 hover:text-sky-700 tabular-nums block mt-1">
+                  <a href="tel:+380487017029" class="text-sm font-extrabold text-slate-900 hover:text-pif-700 tabular-nums block mt-1">
                     (048) 701-70-29
                   </a>
                 </div>
-                <div class="p-4 rounded-2xl bg-[#f4f7fa] border border-slate-200/80">
+                <div class="p-4 rounded-2xl bg-[#f8fafc] border border-slate-200/80">
                   <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Електронна пошта</div>
-                  <a href="mailto:piftm.info@gmail.com" class="text-sm font-extrabold text-sky-700 hover:underline block mt-1 break-all">
+                  <a href="mailto:piftm.info@gmail.com" class="text-sm font-extrabold text-pif-700 hover:underline block mt-1 break-all">
                     piftm.info@gmail.com
                   </a>
                 </div>
@@ -691,7 +720,7 @@
           </div>
 
           <div class="lg:col-span-7">
-            <div class="bg-[#f4f7fa] rounded-3xl p-6 sm:p-8 border border-slate-200/90">
+            <div class="bg-[#f8fafc] rounded-3xl p-6 sm:p-8 border border-slate-200/90">
               <h3 class="text-xl font-extrabold text-slate-900">Швидка заявка на замовлення або оптовий прайс</h3>
               <p class="text-xs text-slate-600 mt-1 mb-5">
                 Заповніть форму нижче — ми сформуємо готове повідомлення з вашими контактами та обраними товарами для відправки у WhatsApp або на E-mail <span class="font-semibold text-slate-800">piftm.info@gmail.com</span>.
@@ -701,18 +730,18 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label for="inq-name" class="block text-xs font-bold text-slate-700 mb-1">Ваше ім’я або компанія *</label>
-                    <input type="text" id="inq-name" required placeholder="Напр.: Олександр / ТОВ Чистий Дім" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:border-sky-600" />
+                    <input type="text" id="inq-name" required placeholder="Напр.: Олександр / ТОВ Чистий Дім" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:border-pif-600" />
                   </div>
                   <div>
                     <label for="inq-phone" class="block text-xs font-bold text-slate-700 mb-1">Телефон для зв’язку *</label>
-                    <input type="tel" id="inq-phone" required placeholder="+380 (__) ___-__-__" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:border-sky-600" />
+                    <input type="tel" id="inq-phone" required placeholder="+380 (__) ___-__-__" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:border-pif-600" />
                   </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label for="inq-type" class="block text-xs font-bold text-slate-700 mb-1">Тип запиту</label>
-                    <select id="inq-type" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:border-sky-600 cursor-pointer">
+                    <select id="inq-type" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:border-pif-600 cursor-pointer">
                       <option value="Роздрібне замовлення">Роздрібне замовлення</option>
                       <option value="Оптова закупівля (B2B / HoReCa)">Оптова закупівля (B2B / HoReCa)</option>
                       <option value="Контрактне виробництво (Private Label)">Контрактне виробництво (Private Label)</option>
@@ -721,13 +750,13 @@
                   </div>
                   <div>
                     <label for="inq-city" class="block text-xs font-bold text-slate-700 mb-1">Місто / Спосіб доставки</label>
-                    <input type="text" id="inq-city" placeholder="Напр.: Одеса, Київ, Нова Пошта, Самовивіз" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:border-sky-600" />
+                    <input type="text" id="inq-city" placeholder="Напр.: Одеса, Київ, Нова Пошта, Самовивіз" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:border-pif-600" />
                   </div>
                 </div>
 
                 <div>
                   <label for="inq-message" class="block text-xs font-bold text-slate-700 mb-1">Коментар або перелік позицій</label>
-                  <textarea id="inq-message" rows="3" placeholder="Вкажіть потрібні засоби та об'єми (або додайте товари кнопкою «+ До заявки» у каталозі вище)..." class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:border-sky-600"></textarea>
+                  <textarea id="inq-message" rows="3" placeholder="Вкажіть потрібні засоби та об'єми (або додайте товари кнопкою «+ До заявки» у каталозі вище)..." class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:border-pif-600"></textarea>
                 </div>
 
                 <div class="flex flex-wrap items-center gap-3 pt-1">
@@ -735,7 +764,7 @@
                     <i class="fa-brands fa-whatsapp text-base"></i>
                     Надіслати у WhatsApp
                   </button>
-                  <button type="button" id="inq-send-email-btn" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#0a4d8c] hover:bg-[#073b6d] text-white font-bold text-sm shadow-sm transition-all cursor-pointer">
+                  <button type="button" id="inq-send-email-btn" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#339af0] hover:bg-[#1c7ed6] text-white font-bold text-sm shadow-sm transition-all cursor-pointer">
                     <i class="fa-regular fa-envelope"></i>
                     Надіслати на E-mail
                   </button>
@@ -750,25 +779,25 @@
   </main>
 
   <!-- 9. COMPACT PROFESSIONAL FOOTER -->
-  <footer class="bg-[#091e36] text-slate-300 border-t border-slate-800">
+  <footer class="bg-[#1c2430] text-slate-300 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-8 border-b border-slate-800">
         
         <div class="lg:col-span-4 space-y-3">
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-500 to-[#0a4d8c] flex flex-col items-center justify-center text-white font-extrabold text-sm shrink-0">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-pif-500 to-[#339af0] flex flex-col items-center justify-center text-white font-extrabold text-sm shrink-0">
               ПІФ
             </div>
             <div>
               <div class="text-white font-extrabold text-base tracking-tight">ТМ «ПІФ» · З 2005 року</div>
-              <div class="text-xs text-sky-300 font-medium">ТОВ «Кодимський Райпостач»</div>
+              <div class="text-xs text-pif-300 font-medium">ТОВ «Кодимський Райпостач»</div>
             </div>
           </div>
           <p class="text-xs text-slate-400 leading-relaxed max-w-sm">
             Український виробник якісних мийних і чистячих засобів для дому, HoReCa, офісів та промисловості. Власне виробництво в м. Одеса, перевірені рецептури та чесні ціни.
           </p>
           <div class="pt-1 flex items-center gap-2 text-xs text-slate-400">
-            <i class="fa-solid fa-shield-halved text-sky-400"></i>
+            <i class="fa-solid fa-shield-halved text-pif-400"></i>
             <span>Сировина європейських стандартів якості</span>
           </div>
         </div>
@@ -776,26 +805,26 @@
         <div class="lg:col-span-3 space-y-2">
           <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-2.5">Каталог засобів</h4>
           <ul class="space-y-1.5 text-xs">
-            <li><button type="button" data-footer-cat="dishes" class="footer-cat-link hover:text-sky-300 transition-colors cursor-pointer">Засоби для миття посуду (500мл, 5л)</button></li>
-            <li><button type="button" data-footer-cat="bath" class="footer-cat-link hover:text-sky-300 transition-colors cursor-pointer">Для ванних кімнат, кранів та унітазів</button></li>
-            <li><button type="button" data-footer-cat="degreaser" class="footer-cat-link hover:text-sky-300 transition-colors cursor-pointer">Антижир для плит та фритюрниць</button></li>
-            <li><button type="button" data-footer-cat="floors" class="footer-cat-link hover:text-sky-300 transition-colors cursor-pointer">Засоби для миття підлоги (1л, 5л)</button></li>
-            <li><button type="button" data-footer-cat="pipes" class="footer-cat-link hover:text-sky-300 transition-colors cursor-pointer">Очищення каналізаційних труб та сифонів</button></li>
-            <li><button type="button" data-footer-cat="glass" class="footer-cat-link hover:text-sky-300 transition-colors cursor-pointer">Засоби для миття скла та дзеркал</button></li>
-            <li><button type="button" data-footer-cat="soap" class="footer-cat-link hover:text-sky-300 transition-colors cursor-pointer">Рідке мило у каністрах 5 л</button></li>
+            <li><button type="button" data-footer-cat="dishes" class="footer-cat-link hover:text-pif-300 transition-colors cursor-pointer">Засоби для миття посуду (500мл, 5л)</button></li>
+            <li><button type="button" data-footer-cat="bath" class="footer-cat-link hover:text-pif-300 transition-colors cursor-pointer">Для ванних кімнат, кранів та унітазів</button></li>
+            <li><button type="button" data-footer-cat="degreaser" class="footer-cat-link hover:text-pif-300 transition-colors cursor-pointer">Антижир для плит та фритюрниць</button></li>
+            <li><button type="button" data-footer-cat="floors" class="footer-cat-link hover:text-pif-300 transition-colors cursor-pointer">Засоби для миття підлоги (1л, 5л)</button></li>
+            <li><button type="button" data-footer-cat="pipes" class="footer-cat-link hover:text-pif-300 transition-colors cursor-pointer">Очищення каналізаційних труб та сифонів</button></li>
+            <li><button type="button" data-footer-cat="glass" class="footer-cat-link hover:text-pif-300 transition-colors cursor-pointer">Засоби для миття скла та дзеркал</button></li>
+            <li><button type="button" data-footer-cat="soap" class="footer-cat-link hover:text-pif-300 transition-colors cursor-pointer">Рідке мило у каністрах 5 л</button></li>
           </ul>
         </div>
 
         <div class="lg:col-span-2 space-y-2">
           <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-2.5">Навігація</h4>
           <ul class="space-y-1.5 text-xs">
-            <li><a href="#hero-section" class="hover:text-sky-300 transition-colors">Головна</a></li>
-            <li><a href="#catalog-section" class="hover:text-sky-300 transition-colors">Продукція та ціни</a></li>
-            <li><a href="#b2b-section" class="hover:text-sky-300 transition-colors">Опт та Private Label</a></li>
-            <li><a href="#about-section" class="hover:text-sky-300 transition-colors">Про компанію</a></li>
-            <li><a href="#contacts-section" class="hover:text-sky-300 transition-colors">Контакти</a></li>
+            <li><a href="#hero-section" class="hover:text-pif-300 transition-colors">Головна</a></li>
+            <li><a href="#catalog-section" class="hover:text-pif-300 transition-colors">Продукція та ціни</a></li>
+            <li><a href="#b2b-section" class="hover:text-pif-300 transition-colors">Опт та Private Label</a></li>
+            <li><a href="#about-section" class="hover:text-pif-300 transition-colors">Про компанію</a></li>
+            <li><a href="#contacts-section" class="hover:text-pif-300 transition-colors">Контакти</a></li>
             <li class="pt-1">
-              <button type="button" id="footer-price-editor-btn" class="inline-flex items-center gap-1.5 text-sky-300 hover:text-white font-semibold cursor-pointer">
+              <button type="button" id="footer-price-editor-btn" class="inline-flex items-center gap-1.5 text-pif-300 hover:text-white font-semibold cursor-pointer">
                 <i class="fa-solid fa-key text-[11px]"></i> Увійти в редактор цін
               </button>
             </li>
@@ -805,20 +834,20 @@
         <div class="lg:col-span-3 space-y-2.5 text-xs">
           <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-2.5">Контакти виробника</h4>
           <p class="text-slate-300 flex items-start gap-2">
-            <i class="fa-solid fa-location-dot text-sky-400 mt-1 shrink-0"></i>
+            <i class="fa-solid fa-location-dot text-pif-400 mt-1 shrink-0"></i>
             <span>провулок Вознесенський № 3, м. Одеса, Україна, 65007</span>
           </p>
           <p class="flex items-center gap-2 tabular-nums">
-            <i class="fa-solid fa-phone text-sky-400 shrink-0"></i>
-            <span>Тел./факс: <a href="tel:+380487017029" class="text-white hover:text-sky-300 font-semibold">(048) 701-70-29</a></span>
+            <i class="fa-solid fa-phone text-pif-400 shrink-0"></i>
+            <span>Тел./факс: <a href="tel:+380487017029" class="text-white hover:text-pif-300 font-semibold">(048) 701-70-29</a></span>
           </p>
           <p class="flex items-center gap-2 tabular-nums">
             <i class="fa-brands fa-whatsapp text-emerald-400 text-sm shrink-0"></i>
-            <span>Моб.: <a href="tel:+380679720560" class="text-white hover:text-sky-300 font-semibold">+380 67 972 05 60</a></span>
+            <span>Моб.: <a href="tel:+380679720560" class="text-white hover:text-pif-300 font-semibold">+380 67 972 05 60</a></span>
           </p>
           <p class="flex items-center gap-2">
-            <i class="fa-regular fa-envelope text-sky-400 shrink-0"></i>
-            <a href="mailto:piftm.info@gmail.com" class="text-sky-300 hover:underline">piftm.info@gmail.com</a>
+            <i class="fa-regular fa-envelope text-pif-400 shrink-0"></i>
+            <a href="mailto:piftm.info@gmail.com" class="text-pif-300 hover:underline">piftm.info@gmail.com</a>
           </p>
         </div>
 
@@ -828,7 +857,7 @@
         <div>© 2005–2026 ТМ «ПІФ» · ТОВ «Кодимський Райпостач». Усі права захищено.</div>
         <div class="flex items-center gap-4">
           <span>Зроблено в Україні 🇺🇦</span>
-          <button type="button" id="bottom-discreet-login" class="text-slate-400 hover:text-sky-300 underline cursor-pointer">
+          <button type="button" id="bottom-discreet-login" class="text-slate-400 hover:text-pif-300 underline cursor-pointer">
             Увійти (Адмін цін)
           </button>
         </div>
@@ -839,10 +868,10 @@
   <!-- 10. ORDER QUOTE / B2B CART DRAWER -->
   <div id="quote-drawer-backdrop" class="hidden fixed inset-0 bg-slate-950/60 backdrop-blur-xs z-50"></div>
   <aside id="quote-drawer" class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-white z-50 shadow-2xl border-l border-slate-200 flex flex-col translate-x-full transition-transform duration-300" aria-label="Заявка на замовлення">
-    <div class="p-4 sm:p-5 bg-[#0c2d4e] text-white flex items-center justify-between">
+    <div class="p-4 sm:p-5 bg-[#1864ab] text-white flex items-center justify-between">
       <div>
         <h3 class="text-base font-extrabold flex items-center gap-2">
-          <i class="fa-solid fa-clipboard-check text-sky-300"></i>
+          <i class="fa-solid fa-clipboard-check text-pif-300"></i>
           Ваша заявка / Кошик замовлення
         </h3>
         <p class="text-xs text-slate-300 mt-0.5">Сформуйте список та надішліть у WhatsApp або E-mail</p>
@@ -857,13 +886,13 @@
     <div class="p-4 sm:p-5 bg-slate-50 border-t border-slate-200 space-y-3">
       <div class="flex items-center justify-between text-sm">
         <span class="font-semibold text-slate-600">Разом за обраними позиціями:</span>
-        <span id="quote-total-price" class="text-lg font-extrabold text-[#0a4d8c] tabular-nums">0.00 грн</span>
+        <span id="quote-total-price" class="text-lg font-extrabold text-[#339af0] tabular-nums">0.00 грн</span>
       </div>
       <div class="grid grid-cols-2 gap-2">
         <button type="button" id="quote-send-whatsapp-btn" class="py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm cursor-pointer">
           <i class="fa-brands fa-whatsapp text-sm"></i> Замовити у WhatsApp
         </button>
-        <button type="button" id="quote-send-email-btn" class="py-2.5 px-3 rounded-xl bg-[#0a4d8c] hover:bg-[#073b6d] text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm cursor-pointer">
+        <button type="button" id="quote-send-email-btn" class="py-2.5 px-3 rounded-xl bg-[#339af0] hover:bg-[#1c7ed6] text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm cursor-pointer">
           <i class="fa-regular fa-envelope"></i> Надіслати на E-mail
         </button>
       </div>
@@ -878,7 +907,7 @@
     <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4">
       <div class="flex items-start justify-between gap-3">
         <div class="flex items-center gap-2.5">
-          <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-800 flex items-center justify-center font-bold">
+          <div class="w-10 h-10 rounded-xl bg-pif-100 text-pif-800 flex items-center justify-center font-bold">
             <i class="fa-solid fa-lock"></i>
           </div>
           <div>
@@ -892,17 +921,17 @@
       </div>
 
       <p class="text-xs text-slate-600 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-200">
-        Введіть пароль власника з файлу <code class="font-mono font-semibold text-slate-800">editor-config.json</code> (за замовчуванням у репозиторії: <code class="font-mono font-bold text-sky-700">changeme</code>) або натисніть кнопку швидкого входу нижче.
+        Введіть пароль власника з файлу <code class="font-mono font-semibold text-slate-800">editor-config.json</code> (за замовчуванням у репозиторії: <code class="font-mono font-bold text-pif-700">changeme</code>) або натисніть кнопку швидкого входу нижче.
       </p>
 
       <form id="price-editor-gate-form" class="space-y-3">
         <div>
           <label for="price-editor-password" class="block text-xs font-bold text-slate-700 mb-1">Пароль власника</label>
-          <input id="price-editor-password" type="password" value="changeme" required class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:border-sky-600" />
+          <input id="price-editor-password" type="password" value="changeme" required class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:border-pif-600" />
         </div>
         <p id="price-editor-gate-error" class="hidden text-xs font-semibold text-rose-600"></p>
         <div class="flex flex-wrap items-center gap-2 pt-1">
-          <button type="submit" class="flex-1 py-2.5 px-4 rounded-xl bg-[#0a4d8c] hover:bg-[#073b6d] text-white text-xs sm:text-sm font-bold shadow-sm cursor-pointer">
+          <button type="submit" class="flex-1 py-2.5 px-4 rounded-xl bg-[#339af0] hover:bg-[#1c7ed6] text-white text-xs sm:text-sm font-bold shadow-sm cursor-pointer">
             <i class="fa-solid fa-unlock mr-1.5"></i> Увійти в редактор цін
           </button>
           <button type="button" id="gate-instant-unlock-btn" class="py-2.5 px-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold cursor-pointer" title="Миттєвий вхід одним кліком">
@@ -917,14 +946,14 @@
   <div id="price-editor-backdrop" class="hidden fixed inset-0 bg-slate-950/65 backdrop-blur-xs z-50"></div>
   <aside id="price-editor" class="hidden fixed inset-y-0 right-0 z-50 w-full max-w-3xl bg-white shadow-2xl border-l border-slate-200 flex flex-col" role="dialog" aria-modal="true" aria-labelledby="price-editor-heading">
     
-    <div class="px-5 py-4 bg-[#0c2d4e] text-white flex items-center justify-between gap-3 border-b border-slate-700">
+    <div class="px-5 py-4 bg-[#1864ab] text-white flex items-center justify-between gap-3 border-b border-slate-700">
       <div>
         <div class="flex items-center gap-2">
           <h3 id="price-editor-heading" class="text-base sm:text-lg font-extrabold">Редактор цін та фасувань (p01–p14)</h3>
           <span class="text-[11px] bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 px-2 py-0.5 rounded-full font-semibold">products.json</span>
         </div>
         <p class="text-xs text-slate-300 mt-0.5">
-          Змініть ціни або додайте нові об’єми тари. Натисніть «Зберегти», щоб оновити сайт, або завантажте готовий <code class="text-sky-300 font-mono">products.json</code> для GitHub.
+          Змініть ціни або додайте нові об’єми тари. Натисніть «Зберегти», щоб оновити сайт, або завантажте готовий <code class="text-pif-300 font-mono">products.json</code> для GitHub.
         </p>
       </div>
       <button type="button" id="price-editor-close" aria-label="Закрити редактор" class="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 cursor-pointer">
@@ -946,23 +975,23 @@
       </div>
 
       <div class="flex items-center gap-1.5">
-        <button type="button" id="tab-visual-editor-btn" class="px-3 py-1 rounded-md bg-[#0a4d8c] text-white font-semibold cursor-pointer">Таблиця товарів</button>
+        <button type="button" id="tab-visual-editor-btn" class="px-3 py-1 rounded-md bg-[#339af0] text-white font-semibold cursor-pointer">Таблиця товарів</button>
         <button type="button" id="tab-raw-json-btn" class="px-3 py-1 rounded-md bg-white text-slate-700 border border-slate-300 font-semibold cursor-pointer">Код products.json</button>
       </div>
     </div>
 
-    <div id="price-editor-status" class="hidden px-5 py-2 text-xs font-semibold bg-sky-50 text-sky-900 border-b border-sky-200"></div>
+    <div id="price-editor-status" class="hidden px-5 py-2 text-xs font-semibold bg-pif-50 text-pif-900 border-b border-pif-200"></div>
 
     <div id="price-editor-list" class="flex-1 overflow-y-auto p-5 space-y-3 bg-slate-50/60"></div>
 
     <div id="price-editor-json-tab" class="hidden flex-1 flex-col p-5 bg-slate-900 text-slate-100 overflow-hidden">
       <div class="flex items-center justify-between mb-2">
-        <span class="text-xs font-semibold text-sky-300">Вміст файлу <code class="font-mono">products.json</code> (можна редагувати або вставити свій JSON):</span>
+        <span class="text-xs font-semibold text-pif-300">Вміст файлу <code class="font-mono">products.json</code> (можна редагувати або вставити свій JSON):</span>
         <button type="button" id="apply-raw-json-btn" class="px-3 py-1 rounded bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold cursor-pointer">
           Застосувати вставлений JSON
         </button>
       </div>
-      <textarea id="raw-json-textarea" class="w-full flex-1 p-3 rounded-xl bg-slate-950 border border-slate-700 font-mono text-xs text-emerald-300 focus:outline-none focus:border-sky-400"></textarea>
+      <textarea id="raw-json-textarea" class="w-full flex-1 p-3 rounded-xl bg-slate-950 border border-slate-700 font-mono text-xs text-emerald-300 focus:outline-none focus:border-pif-400"></textarea>
     </div>
 
     <div id="reset-confirm-bar" class="hidden px-5 py-3 bg-rose-50 border-t border-rose-200 flex items-center justify-between gap-3">
@@ -986,7 +1015,7 @@
         <button type="button" id="price-editor-download" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-sm transition-colors cursor-pointer">
           <i class="fa-solid fa-download mr-1"></i> Завантажити products.json
         </button>
-        <button type="button" id="price-editor-save-draft" class="px-4 py-2 rounded-xl bg-[#0a4d8c] hover:bg-[#073b6d] text-white text-xs sm:text-sm font-bold shadow-sm transition-colors cursor-pointer">
+        <button type="button" id="price-editor-save-draft" class="px-4 py-2 rounded-xl bg-[#339af0] hover:bg-[#1c7ed6] text-white text-xs sm:text-sm font-bold shadow-sm transition-colors cursor-pointer">
           <i class="fa-solid fa-check mr-1"></i> Зберегти та оновити сайт
         </button>
       </div>
@@ -994,10 +1023,17 @@
   </aside>
 
   <!-- Toast Notification -->
-  <div id="pif-toast" class="fixed bottom-5 right-5 z-50 max-w-sm bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl border border-sky-500/40 text-xs sm:text-sm font-semibold flex items-center gap-2.5 opacity-0 pointer-events-none translate-y-3 transition-all duration-300">
+  <div id="pif-toast" class="fixed bottom-5 right-5 z-50 max-w-sm bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl border border-pif-500/40 text-xs sm:text-sm font-semibold flex items-center gap-2.5 opacity-0 pointer-events-none translate-y-3 transition-all duration-300">
     <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
     <span id="pif-toast-text">Збережено!</span>
   </div>
+
+
+  <a id="wa-fab" href="https://api.whatsapp.com/send?phone=380679720560" target="_blank" rel="noopener noreferrer"
+     class="safe-fab fixed z-40 inline-flex items-center justify-center w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg shadow-emerald-600/30 lg:hidden"
+     aria-label="Написати у WhatsApp">
+    <i class="fa-brands fa-whatsapp text-2xl"></i>
+  </a>
 
   <!-- 13. APPLICATION & PRICE MANAGEMENT SCRIPT -->
   <script>
@@ -1557,7 +1593,7 @@
             const isSel = idx === selIdx;
             return `<button type="button" data-action="select-size" data-pid="${escapeHtml(p.id)}" data-sidx="${idx}" class="px-2.5 py-1 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
               isSel
-                ? 'bg-[#0a4d8c] text-white border-[#0a4d8c] shadow-xs'
+                ? 'bg-[#339af0] text-white border-[#339af0] shadow-xs'
                 : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200'
             }">${escapeHtml(s.label)}</button>`;
           }).join('');
@@ -1566,16 +1602,16 @@
           if (editorUnlocked) {
             const rows = sizes.map((s, idx) => `
               <div class="flex items-center gap-1.5 mt-1.5">
-                <input type="text" data-inline-label="${escapeHtml(p.id)}" data-sidx="${idx}" value="${escapeHtml(s.label)}" class="w-28 px-2 py-1 rounded bg-white border border-sky-300 text-[11px] font-medium text-slate-800" />
-                <input type="number" step="0.10" data-inline-price="${escapeHtml(p.id)}" data-sidx="${idx}" value="${escapeHtml(s.price)}" class="w-20 px-2 py-1 rounded bg-white border border-sky-300 text-xs font-bold text-sky-900 tabular-nums" />
+                <input type="text" data-inline-label="${escapeHtml(p.id)}" data-sidx="${idx}" value="${escapeHtml(s.label)}" class="w-28 px-2 py-1 rounded bg-white border border-pif-300 text-[11px] font-medium text-slate-800" />
+                <input type="number" step="0.10" data-inline-price="${escapeHtml(p.id)}" data-sidx="${idx}" value="${escapeHtml(s.price)}" class="w-20 px-2 py-1 rounded bg-white border border-pif-300 text-xs font-bold text-pif-900 tabular-nums" />
                 <span class="text-[11px] text-slate-500">грн</span>
               </div>
             `).join('');
             inlineEditHtml = `
-              <div class="mt-3 p-2.5 rounded-xl bg-sky-50/90 border border-sky-200">
+              <div class="mt-3 p-2.5 rounded-xl bg-pif-50/90 border border-pif-200">
                 <div class="flex items-center justify-between">
-                  <span class="text-[11px] font-bold text-sky-900"><i class="fa-solid fa-pen-to-square mr-1"></i>Швидка зміна ціни (${escapeHtml(p.id)}):</span>
-                  <button type="button" data-action="save-inline-card" data-pid="${escapeHtml(p.id)}" class="px-2 py-0.5 rounded bg-sky-700 hover:bg-sky-800 text-white text-[11px] font-bold cursor-pointer">Зберегти</button>
+                  <span class="text-[11px] font-bold text-pif-900"><i class="fa-solid fa-pen-to-square mr-1"></i>Швидка зміна ціни (${escapeHtml(p.id)}):</span>
+                  <button type="button" data-action="save-inline-card" data-pid="${escapeHtml(p.id)}" class="px-2 py-0.5 rounded bg-pif-700 hover:bg-pif-800 text-white text-[11px] font-bold cursor-pointer">Зберегти</button>
                 </div>
                 ${rows}
               </div>
@@ -1600,25 +1636,28 @@
               <div class="px-4 pt-3.5 pb-2 flex items-center justify-between gap-2 border-b border-slate-100">
                 <div class="flex items-center gap-1.5">
                   <span class="text-[11px] font-mono font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600 uppercase">${escapeHtml(p.id)}</span>
-                  <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-800 border border-sky-200/60">${escapeHtml(p.shortCategory)}</span>
+                  <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-pif-50 text-pif-800 border border-pif-200/60">${escapeHtml(p.shortCategory)}</span>
                 </div>
                 <span class="text-[11px] font-medium text-slate-500">${escapeHtml(p.phLevel)}</span>
               </div>
 
-              <div class="relative bg-white px-6 py-4 flex items-center justify-center h-52 border-b border-slate-100 group">
+              <div class="relative product-img-well aspect-[4/5] sm:aspect-square border-b border-slate-100 group overflow-hidden">
                 <img
-                  src="${escapeHtml(p.canvasImage)}"
+                  src="${escapeHtml(p.image || p.canvasImage)}"
                   alt="${escapeHtml(p.name)}"
-                  class="max-h-44 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                  onerror="this.onerror=null;this.src='${escapeHtml(p.canvasImage || p.image)}';"
+                  class="transition-transform duration-300 group-hover:scale-[1.03]"
                 />
-                <span class="absolute bottom-2.5 right-3 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-900/80 text-white">
+                <span class="absolute bottom-2.5 right-3 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[#1c2430]/80 text-white">
                   ${escapeHtml(p.b2bTag)}
                 </span>
               </div>
 
               <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between">
                 <div>
-                  <div class="text-[11px] font-bold text-sky-700 mb-1">${escapeHtml(p.formulaBadge)}</div>
+                  <div class="text-[11px] font-bold text-pif-700 mb-1">${escapeHtml(p.formulaBadge)}</div>
                   <h3 class="text-base font-extrabold text-slate-900 leading-snug line-clamp-2 min-h-[2.75rem]">
                     ${escapeHtml(p.name)}
                   </h3>
@@ -1629,18 +1668,18 @@
                   <div class="mt-3.5 pt-3 border-t border-slate-100">
                     <div class="flex items-center justify-between text-[11px] text-slate-500 font-semibold mb-1.5">
                       <span>Оберіть фасування:</span>
-                      <span class="text-sky-700 tabular-nums">${escapeHtml(perLiterText)}</span>
+                      <span class="text-pif-700 tabular-nums">${escapeHtml(perLiterText)}</span>
                     </div>
                     <div class="flex flex-wrap gap-1.5">
                       ${sizePillsHtml}
                     </div>
                   </div>
 
-                  <div class="mt-3.5 bg-[#f4f7fa] rounded-xl p-3 border border-slate-200/80">
+                  <div class="mt-3.5 bg-[#f8fafc] rounded-xl p-3 border border-slate-200/80">
                     <div class="flex items-baseline justify-between gap-2">
                       <div>
                         <span class="text-xs text-slate-500 font-medium">Ціна (${escapeHtml(currentSize.label)}):</span>
-                        <div class="text-xl sm:text-2xl font-extrabold text-[#0a4d8c] tabular-nums leading-tight mt-0.5">
+                        <div class="text-xl sm:text-2xl font-extrabold text-[#339af0] tabular-nums leading-tight mt-0.5">
                           ${effPrice.toFixed(2)} <span class="text-sm font-bold text-slate-600">грн</span>
                         </div>
                       </div>
@@ -1660,8 +1699,8 @@
                   <div class="mt-3.5 border border-slate-200 rounded-xl divide-y divide-slate-200 overflow-hidden bg-white">
                     <div>
                       <button type="button" data-action="toggle-acc" data-acc-key="${escapeHtml(accPurposeKey)}" class="w-full px-3 py-2 text-left text-xs font-bold text-slate-800 hover:bg-slate-50 flex items-center justify-between cursor-pointer">
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-info text-sky-600"></i> Призначення та дія</span>
-                        <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform ${isPurposeOpen ? 'rotate-180 text-sky-700' : ''}"></i>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-info text-pif-600"></i> Призначення та дія</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform ${isPurposeOpen ? 'rotate-180 text-pif-700' : ''}"></i>
                       </button>
                       <div class="accordion-content px-3 text-xs text-slate-600 leading-relaxed bg-slate-50/70 ${isPurposeOpen ? 'open py-2.5 border-t border-slate-100' : ''}">
                         ${escapeHtml(p.purpose)}
@@ -1670,8 +1709,8 @@
 
                     <div>
                       <button type="button" data-action="toggle-acc" data-acc-key="${escapeHtml(accUsageKey)}" class="w-full px-3 py-2 text-left text-xs font-bold text-slate-800 hover:bg-slate-50 flex items-center justify-between cursor-pointer">
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-spray-can-sparkles text-sky-600"></i> Спосіб застосування</span>
-                        <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform ${isUsageOpen ? 'rotate-180 text-sky-700' : ''}"></i>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-spray-can-sparkles text-pif-600"></i> Спосіб застосування</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform ${isUsageOpen ? 'rotate-180 text-pif-700' : ''}"></i>
                       </button>
                       <div class="accordion-content px-3 text-xs text-slate-600 leading-relaxed bg-slate-50/70 ${isUsageOpen ? 'open py-2.5 border-t border-slate-100' : ''}">
                         ${escapeHtml(p.usage)}
@@ -1680,8 +1719,8 @@
 
                     <div>
                       <button type="button" data-action="toggle-acc" data-acc-key="${escapeHtml(accCompKey)}" class="w-full px-3 py-2 text-left text-xs font-bold text-slate-800 hover:bg-slate-50 flex items-center justify-between cursor-pointer">
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-flask text-sky-600"></i> Склад та безпека</span>
-                        <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform ${isCompOpen ? 'rotate-180 text-sky-700' : ''}"></i>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-flask text-pif-600"></i> Склад та безпека</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform ${isCompOpen ? 'rotate-180 text-pif-700' : ''}"></i>
                       </button>
                       <div class="accordion-content px-3 text-xs text-slate-600 leading-relaxed bg-slate-50/70 ${isCompOpen ? 'open py-2.5 border-t border-slate-100' : ''}">
                         ${escapeHtml(p.composition)}
@@ -1696,7 +1735,7 @@
                     data-action="add-to-quote"
                     data-pid="${escapeHtml(p.id)}"
                     data-sidx="${selIdx}"
-                    class="flex-1 py-2.5 px-3 rounded-xl bg-[#0a4d8c] hover:bg-[#073b6d] text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs transition-colors cursor-pointer"
+                    class="flex-1 py-2.5 px-3 rounded-xl bg-[#339af0] hover:bg-[#1c7ed6] text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs transition-colors cursor-pointer"
                   >
                     <i class="fa-solid fa-plus"></i> До заявки
                   </button>
@@ -1973,7 +2012,7 @@
                 data-ed-label="${pIdx}:${sIdx}"
                 value="${escapeHtml(sz.label)}"
                 placeholder="Фасування (напр. 500мл, 5л)"
-                class="flex-1 px-3 py-1.5 rounded-lg bg-white border border-slate-300 text-xs font-medium text-slate-800 focus:outline-none focus:border-sky-600"
+                class="flex-1 px-3 py-1.5 rounded-lg bg-white border border-slate-300 text-xs font-medium text-slate-800 focus:outline-none focus:border-pif-600"
               />
               <div class="relative w-32 shrink-0">
                 <input
@@ -1982,7 +2021,7 @@
                   data-ed-price="${pIdx}:${sIdx}"
                   value="${escapeHtml(sz.price)}"
                   placeholder="Ціна"
-                  class="w-full pl-3 pr-10 py-1.5 rounded-lg bg-white border border-slate-300 text-xs font-extrabold text-slate-900 tabular-nums focus:outline-none focus:border-sky-600"
+                  class="w-full pl-3 pr-10 py-1.5 rounded-lg bg-white border border-slate-300 text-xs font-extrabold text-slate-900 tabular-nums focus:outline-none focus:border-pif-600"
                 />
                 <span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-[11px] text-slate-400 font-semibold">грн</span>
               </div>
@@ -2009,7 +2048,7 @@
                     class="w-full px-2.5 py-1 rounded-lg bg-slate-50 hover:bg-white focus:bg-white border border-transparent focus:border-slate-300 text-xs sm:text-sm font-bold text-slate-900 focus:outline-none"
                   />
                 </div>
-                <span class="text-[11px] font-semibold text-sky-700 bg-sky-50 px-2 py-0.5 rounded shrink-0">${escapeHtml(prod.shortCategory)}</span>
+                <span class="text-[11px] font-semibold text-pif-700 bg-pif-50 px-2 py-0.5 rounded shrink-0">${escapeHtml(prod.shortCategory)}</span>
               </div>
               <div class="pt-1">
                 ${sizesRows}
@@ -2112,9 +2151,9 @@
 
           if (mode === 'b2b') {
             if (rBtn) rBtn.className = 'px-2.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 transition-all cursor-pointer';
-            if (bBtn) bBtn.className = 'px-2.5 py-1.5 rounded-md bg-[#0a4d8c] text-white shadow-sm transition-all cursor-pointer';
+            if (bBtn) bBtn.className = 'px-2.5 py-1.5 rounded-md bg-[#339af0] text-white shadow-sm transition-all cursor-pointer';
             if (mrBtn) mrBtn.className = 'px-2.5 py-1 rounded bg-white text-slate-700 border border-slate-300 text-xs font-semibold';
-            if (mbBtn) mbBtn.className = 'px-2.5 py-1 rounded bg-sky-700 text-white text-xs font-semibold';
+            if (mbBtn) mbBtn.className = 'px-2.5 py-1 rounded bg-pif-700 text-white text-xs font-semibold';
             if (ind) {
               ind.textContent = 'Оптовий прайс B2B (-12%)';
               ind.className = 'ml-2 inline-flex items-center px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold';
@@ -2123,7 +2162,7 @@
           } else {
             if (rBtn) rBtn.className = 'px-2.5 py-1.5 rounded-md bg-white text-slate-900 shadow-sm transition-all cursor-pointer';
             if (bBtn) bBtn.className = 'px-2.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 transition-all cursor-pointer';
-            if (mrBtn) mrBtn.className = 'px-2.5 py-1 rounded bg-sky-700 text-white text-xs font-semibold';
+            if (mrBtn) mrBtn.className = 'px-2.5 py-1 rounded bg-pif-700 text-white text-xs font-semibold';
             if (mbBtn) mbBtn.className = 'px-2.5 py-1 rounded bg-white text-slate-700 border border-slate-300 text-xs font-semibold';
             if (ind) {
               ind.textContent = 'Роздрібний прайс';
@@ -2145,8 +2184,8 @@
             document.querySelectorAll('.cat-pill').forEach(b => {
               const isAct = b.getAttribute('data-cat') === activeCategory;
               b.className = isAct
-                ? 'cat-pill active shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-[#0a4d8c] text-white shadow-sm transition-all cursor-pointer'
-                : 'cat-pill shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 hover:bg-slate-200/80 text-slate-700 transition-all cursor-pointer';
+                ? 'cat-pill active shrink-0 min-h-[44px] px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-[#339af0] text-white shadow-sm transition-all cursor-pointer'
+                : 'cat-pill shrink-0 min-h-[44px] px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 hover:bg-slate-200/80 text-slate-700 transition-all cursor-pointer';
             });
             renderCatalog();
           });
@@ -2432,7 +2471,7 @@
           visualListEl?.classList.remove('hidden');
           jsonTabEl?.classList.add('hidden');
           jsonTabEl?.classList.remove('flex');
-          tabVisualBtn.className = 'px-3 py-1 rounded-md bg-[#0a4d8c] text-white font-semibold cursor-pointer';
+          tabVisualBtn.className = 'px-3 py-1 rounded-md bg-[#339af0] text-white font-semibold cursor-pointer';
           if (tabJsonBtn) tabJsonBtn.className = 'px-3 py-1 rounded-md bg-white text-slate-700 border border-slate-300 font-semibold cursor-pointer';
           renderEditorDrawerList();
         });
@@ -2443,7 +2482,7 @@
           visualListEl?.classList.add('hidden');
           jsonTabEl?.classList.remove('hidden');
           jsonTabEl?.classList.add('flex');
-          tabJsonBtn.className = 'px-3 py-1 rounded-md bg-[#0a4d8c] text-white font-semibold cursor-pointer';
+          tabJsonBtn.className = 'px-3 py-1 rounded-md bg-[#339af0] text-white font-semibold cursor-pointer';
           if (tabVisualBtn) tabVisualBtn.className = 'px-3 py-1 rounded-md bg-white text-slate-700 border border-slate-300 font-semibold cursor-pointer';
         });
 

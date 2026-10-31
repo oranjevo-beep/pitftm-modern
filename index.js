@@ -554,7 +554,7 @@
             const isSel = idx === selIdx;
             return `<button type="button" data-action="select-size" data-pid="${escapeHtml(p.id)}" data-sidx="${idx}" class="px-2.5 py-1 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
               isSel
-                ? 'bg-[#0a4d8c] text-white border-[#0a4d8c] shadow-xs'
+                ? 'bg-[#339af0] text-white border-[#339af0] shadow-xs'
                 : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200'
             }">${escapeHtml(s.label)}</button>`;
           }).join('');
@@ -563,16 +563,16 @@
           if (editorUnlocked) {
             const rows = sizes.map((s, idx) => `
               <div class="flex items-center gap-1.5 mt-1.5">
-                <input type="text" data-inline-label="${escapeHtml(p.id)}" data-sidx="${idx}" value="${escapeHtml(s.label)}" class="w-28 px-2 py-1 rounded bg-white border border-sky-300 text-[11px] font-medium text-slate-800" />
-                <input type="number" step="0.10" data-inline-price="${escapeHtml(p.id)}" data-sidx="${idx}" value="${escapeHtml(s.price)}" class="w-20 px-2 py-1 rounded bg-white border border-sky-300 text-xs font-bold text-sky-900 tabular-nums" />
+                <input type="text" data-inline-label="${escapeHtml(p.id)}" data-sidx="${idx}" value="${escapeHtml(s.label)}" class="w-28 px-2 py-1 rounded bg-white border border-pif-300 text-[11px] font-medium text-slate-800" />
+                <input type="number" step="0.10" data-inline-price="${escapeHtml(p.id)}" data-sidx="${idx}" value="${escapeHtml(s.price)}" class="w-20 px-2 py-1 rounded bg-white border border-pif-300 text-xs font-bold text-pif-900 tabular-nums" />
                 <span class="text-[11px] text-slate-500">грн</span>
               </div>
             `).join('');
             inlineEditHtml = `
-              <div class="mt-3 p-2.5 rounded-xl bg-sky-50/90 border border-sky-200">
+              <div class="mt-3 p-2.5 rounded-xl bg-pif-50/90 border border-pif-200">
                 <div class="flex items-center justify-between">
-                  <span class="text-[11px] font-bold text-sky-900"><i class="fa-solid fa-pen-to-square mr-1"></i>Швидка зміна ціни (${escapeHtml(p.id)}):</span>
-                  <button type="button" data-action="save-inline-card" data-pid="${escapeHtml(p.id)}" class="px-2 py-0.5 rounded bg-sky-700 hover:bg-sky-800 text-white text-[11px] font-bold cursor-pointer">Зберегти</button>
+                  <span class="text-[11px] font-bold text-pif-900"><i class="fa-solid fa-pen-to-square mr-1"></i>Швидка зміна ціни (${escapeHtml(p.id)}):</span>
+                  <button type="button" data-action="save-inline-card" data-pid="${escapeHtml(p.id)}" class="px-2 py-0.5 rounded bg-pif-700 hover:bg-pif-800 text-white text-[11px] font-bold cursor-pointer">Зберегти</button>
                 </div>
                 ${rows}
               </div>
@@ -597,25 +597,28 @@
               <div class="px-4 pt-3.5 pb-2 flex items-center justify-between gap-2 border-b border-slate-100">
                 <div class="flex items-center gap-1.5">
                   <span class="text-[11px] font-mono font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600 uppercase">${escapeHtml(p.id)}</span>
-                  <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-800 border border-sky-200/60">${escapeHtml(p.shortCategory)}</span>
+                  <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-pif-50 text-pif-800 border border-pif-200/60">${escapeHtml(p.shortCategory)}</span>
                 </div>
                 <span class="text-[11px] font-medium text-slate-500">${escapeHtml(p.phLevel)}</span>
               </div>
 
-              <div class="relative bg-white px-6 py-4 flex items-center justify-center h-52 border-b border-slate-100 group">
+              <div class="relative product-img-well aspect-[4/5] sm:aspect-square border-b border-slate-100 group overflow-hidden">
                 <img
-                  src="${escapeHtml(p.canvasImage)}"
+                  src="${escapeHtml(p.image || p.canvasImage)}"
                   alt="${escapeHtml(p.name)}"
-                  class="max-h-44 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                  onerror="this.onerror=null;this.src='${escapeHtml(p.canvasImage || p.image)}';"
+                  class="transition-transform duration-300 group-hover:scale-[1.03]"
                 />
-                <span class="absolute bottom-2.5 right-3 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-900/80 text-white">
+                <span class="absolute bottom-2.5 right-3 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[#1c2430]/80 text-white">
                   ${escapeHtml(p.b2bTag)}
                 </span>
               </div>
 
               <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between">
                 <div>
-                  <div class="text-[11px] font-bold text-sky-700 mb-1">${escapeHtml(p.formulaBadge)}</div>
+                  <div class="text-[11px] font-bold text-pif-700 mb-1">${escapeHtml(p.formulaBadge)}</div>
                   <h3 class="text-base font-extrabold text-slate-900 leading-snug line-clamp-2 min-h-[2.75rem]">
                     ${escapeHtml(p.name)}
                   </h3>
@@ -626,7 +629,7 @@
                   <div class="mt-3.5 pt-3 border-t border-slate-100">
                     <div class="flex items-center justify-between text-[11px] text-slate-500 font-semibold mb-1.5">
                       <span>Оберіть фасування:</span>
-                      <span class="text-sky-700 tabular-nums">${escapeHtml(perLiterText)}</span>
+                      <span class="text-pif-700 tabular-nums">${escapeHtml(perLiterText)}</span>
                     </div>
                     <div class="flex flex-wrap gap-1.5">
                       ${sizePillsHtml}
@@ -637,7 +640,7 @@
                     <div class="flex items-baseline justify-between gap-2">
                       <div>
                         <span class="text-xs text-slate-500 font-medium">Ціна (${escapeHtml(currentSize.label)}):</span>
-                        <div class="text-xl sm:text-2xl font-extrabold text-[#0a4d8c] tabular-nums leading-tight mt-0.5">
+                        <div class="text-xl sm:text-2xl font-extrabold text-[#339af0] tabular-nums leading-tight mt-0.5">
                           ${effPrice.toFixed(2)} <span class="text-sm font-bold text-slate-600">грн</span>
                         </div>
                       </div>
@@ -657,8 +660,8 @@
                   <div class="mt-3.5 border border-slate-200 rounded-xl divide-y divide-slate-200 overflow-hidden bg-white">
                     <div>
                       <button type="button" data-action="toggle-acc" data-acc-key="${escapeHtml(accPurposeKey)}" class="w-full px-3 py-2 text-left text-xs font-bold text-slate-800 hover:bg-slate-50 flex items-center justify-between cursor-pointer">
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-info text-sky-600"></i> Призначення та дія</span>
-                        <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform ${isPurposeOpen ? 'rotate-180 text-sky-700' : ''}"></i>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-info text-pif-600"></i> Призначення та дія</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform ${isPurposeOpen ? 'rotate-180 text-pif-700' : ''}"></i>
                       </button>
                       <div class="accordion-content px-3 text-xs text-slate-600 leading-relaxed bg-slate-50/70 ${isPurposeOpen ? 'open py-2.5 border-t border-slate-100' : ''}">
                         ${escapeHtml(p.purpose)}
@@ -667,8 +670,8 @@
 
                     <div>
                       <button type="button" data-action="toggle-acc" data-acc-key="${escapeHtml(accUsageKey)}" class="w-full px-3 py-2 text-left text-xs font-bold text-slate-800 hover:bg-slate-50 flex items-center justify-between cursor-pointer">
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-spray-can-sparkles text-sky-600"></i> Спосіб застосування</span>
-                        <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform ${isUsageOpen ? 'rotate-180 text-sky-700' : ''}"></i>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-spray-can-sparkles text-pif-600"></i> Спосіб застосування</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform ${isUsageOpen ? 'rotate-180 text-pif-700' : ''}"></i>
                       </button>
                       <div class="accordion-content px-3 text-xs text-slate-600 leading-relaxed bg-slate-50/70 ${isUsageOpen ? 'open py-2.5 border-t border-slate-100' : ''}">
                         ${escapeHtml(p.usage)}
@@ -677,8 +680,8 @@
 
                     <div>
                       <button type="button" data-action="toggle-acc" data-acc-key="${escapeHtml(accCompKey)}" class="w-full px-3 py-2 text-left text-xs font-bold text-slate-800 hover:bg-slate-50 flex items-center justify-between cursor-pointer">
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-flask text-sky-600"></i> Склад та безпека</span>
-                        <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform ${isCompOpen ? 'rotate-180 text-sky-700' : ''}"></i>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-flask text-pif-600"></i> Склад та безпека</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform ${isCompOpen ? 'rotate-180 text-pif-700' : ''}"></i>
                       </button>
                       <div class="accordion-content px-3 text-xs text-slate-600 leading-relaxed bg-slate-50/70 ${isCompOpen ? 'open py-2.5 border-t border-slate-100' : ''}">
                         ${escapeHtml(p.composition)}
@@ -693,7 +696,7 @@
                     data-action="add-to-quote"
                     data-pid="${escapeHtml(p.id)}"
                     data-sidx="${selIdx}"
-                    class="flex-1 py-2.5 px-3 rounded-xl bg-[#0a4d8c] hover:bg-[#073b6d] text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs transition-colors cursor-pointer"
+                    class="flex-1 py-2.5 px-3 rounded-xl bg-[#339af0] hover:bg-[#1c7ed6] text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs transition-colors cursor-pointer"
                   >
                     <i class="fa-solid fa-plus"></i> До заявки
                   </button>
@@ -970,7 +973,7 @@
                 data-ed-label="${pIdx}:${sIdx}"
                 value="${escapeHtml(sz.label)}"
                 placeholder="Фасування (напр. 500мл, 5л)"
-                class="flex-1 px-3 py-1.5 rounded-lg bg-white border border-slate-300 text-xs font-medium text-slate-800 focus:outline-none focus:border-sky-600"
+                class="flex-1 px-3 py-1.5 rounded-lg bg-white border border-slate-300 text-xs font-medium text-slate-800 focus:outline-none focus:border-pif-600"
               />
               <div class="relative w-32 shrink-0">
                 <input
@@ -979,7 +982,7 @@
                   data-ed-price="${pIdx}:${sIdx}"
                   value="${escapeHtml(sz.price)}"
                   placeholder="Ціна"
-                  class="w-full pl-3 pr-10 py-1.5 rounded-lg bg-white border border-slate-300 text-xs font-extrabold text-slate-900 tabular-nums focus:outline-none focus:border-sky-600"
+                  class="w-full pl-3 pr-10 py-1.5 rounded-lg bg-white border border-slate-300 text-xs font-extrabold text-slate-900 tabular-nums focus:outline-none focus:border-pif-600"
                 />
                 <span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-[11px] text-slate-400 font-semibold">грн</span>
               </div>
@@ -1006,7 +1009,7 @@
                     class="w-full px-2.5 py-1 rounded-lg bg-slate-50 hover:bg-white focus:bg-white border border-transparent focus:border-slate-300 text-xs sm:text-sm font-bold text-slate-900 focus:outline-none"
                   />
                 </div>
-                <span class="text-[11px] font-semibold text-sky-700 bg-sky-50 px-2 py-0.5 rounded shrink-0">${escapeHtml(prod.shortCategory)}</span>
+                <span class="text-[11px] font-semibold text-pif-700 bg-pif-50 px-2 py-0.5 rounded shrink-0">${escapeHtml(prod.shortCategory)}</span>
               </div>
               <div class="pt-1">
                 ${sizesRows}
@@ -1109,9 +1112,9 @@
 
           if (mode === 'b2b') {
             if (rBtn) rBtn.className = 'px-2.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 transition-all cursor-pointer';
-            if (bBtn) bBtn.className = 'px-2.5 py-1.5 rounded-md bg-[#0a4d8c] text-white shadow-sm transition-all cursor-pointer';
+            if (bBtn) bBtn.className = 'px-2.5 py-1.5 rounded-md bg-[#339af0] text-white shadow-sm transition-all cursor-pointer';
             if (mrBtn) mrBtn.className = 'px-2.5 py-1 rounded bg-white text-slate-700 border border-slate-300 text-xs font-semibold';
-            if (mbBtn) mbBtn.className = 'px-2.5 py-1 rounded bg-sky-700 text-white text-xs font-semibold';
+            if (mbBtn) mbBtn.className = 'px-2.5 py-1 rounded bg-pif-700 text-white text-xs font-semibold';
             if (ind) {
               ind.textContent = 'Оптовий прайс B2B (-12%)';
               ind.className = 'ml-2 inline-flex items-center px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold';
@@ -1120,7 +1123,7 @@
           } else {
             if (rBtn) rBtn.className = 'px-2.5 py-1.5 rounded-md bg-white text-slate-900 shadow-sm transition-all cursor-pointer';
             if (bBtn) bBtn.className = 'px-2.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 transition-all cursor-pointer';
-            if (mrBtn) mrBtn.className = 'px-2.5 py-1 rounded bg-sky-700 text-white text-xs font-semibold';
+            if (mrBtn) mrBtn.className = 'px-2.5 py-1 rounded bg-pif-700 text-white text-xs font-semibold';
             if (mbBtn) mbBtn.className = 'px-2.5 py-1 rounded bg-white text-slate-700 border border-slate-300 text-xs font-semibold';
             if (ind) {
               ind.textContent = 'Роздрібний прайс';
@@ -1142,7 +1145,7 @@
             document.querySelectorAll('.cat-pill').forEach(b => {
               const isAct = b.getAttribute('data-cat') === activeCategory;
               b.className = isAct
-                ? 'cat-pill active shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-[#0a4d8c] text-white shadow-sm transition-all cursor-pointer'
+                ? 'cat-pill active shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-[#339af0] text-white shadow-sm transition-all cursor-pointer'
                 : 'cat-pill shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 hover:bg-slate-200/80 text-slate-700 transition-all cursor-pointer';
             });
             renderCatalog();
@@ -1429,7 +1432,7 @@
           visualListEl?.classList.remove('hidden');
           jsonTabEl?.classList.add('hidden');
           jsonTabEl?.classList.remove('flex');
-          tabVisualBtn.className = 'px-3 py-1 rounded-md bg-[#0a4d8c] text-white font-semibold cursor-pointer';
+          tabVisualBtn.className = 'px-3 py-1 rounded-md bg-[#339af0] text-white font-semibold cursor-pointer';
           if (tabJsonBtn) tabJsonBtn.className = 'px-3 py-1 rounded-md bg-white text-slate-700 border border-slate-300 font-semibold cursor-pointer';
           renderEditorDrawerList();
         });
@@ -1440,7 +1443,7 @@
           visualListEl?.classList.add('hidden');
           jsonTabEl?.classList.remove('hidden');
           jsonTabEl?.classList.add('flex');
-          tabJsonBtn.className = 'px-3 py-1 rounded-md bg-[#0a4d8c] text-white font-semibold cursor-pointer';
+          tabJsonBtn.className = 'px-3 py-1 rounded-md bg-[#339af0] text-white font-semibold cursor-pointer';
           if (tabVisualBtn) tabVisualBtn.className = 'px-3 py-1 rounded-md bg-white text-slate-700 border border-slate-300 font-semibold cursor-pointer';
         });
 
