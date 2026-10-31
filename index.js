@@ -13,7 +13,7 @@
     "phLevel": "pH 2.5 (Кислотний)",
     "b2bTag": "Дім та HoReCa",
     "image": "./images/product-2.webp",
-    "canvasImage": "./images/p01.jpg",
+    "canvasImage": "./images/product-2.webp",
     "sizes": [
       {
         "label": "500мл (з розпилювачем)",
@@ -39,7 +39,7 @@
     "phLevel": "pH 13.5 (Сильнолужний)",
     "b2bTag": "Хіт продажів",
     "image": "./images/product-15.webp",
-    "canvasImage": "./images/p02.jpg",
+    "canvasImage": "./images/product-15.webp",
     "sizes": [
       {
         "label": "1 л",
@@ -65,7 +65,7 @@
     "phLevel": "pH 13.0 (Лужний)",
     "b2bTag": "Кухня та гриль",
     "image": "./images/product-3.webp",
-    "canvasImage": "./images/p03.jpg",
+    "canvasImage": "./images/product-3.webp",
     "sizes": [
       {
         "label": "500мл",
@@ -91,7 +91,7 @@
     "phLevel": "pH 13.0 (Лужний)",
     "b2bTag": "Проф. фасування 5Л",
     "image": "./images/product-11.webp",
-    "canvasImage": "./images/p04.jpg",
+    "canvasImage": "./images/product-11.webp",
     "sizes": [
       {
         "label": "5л",
@@ -113,7 +113,7 @@
     "phLevel": "pH 8.0 (М'який лужний)",
     "b2bTag": "Універсальний 1Л",
     "image": "./images/product-16.webp",
-    "canvasImage": "./images/p05.jpg",
+    "canvasImage": "./images/product-16.webp",
     "sizes": [
       {
         "label": "1л",
@@ -135,7 +135,7 @@
     "phLevel": "pH 8.0 (М'який лужний)",
     "b2bTag": "Економія B2B",
     "image": "./images/product-10.webp",
-    "canvasImage": "./images/p06.jpg",
+    "canvasImage": "./images/product-10.webp",
     "sizes": [
       {
         "label": "5л",
@@ -157,7 +157,7 @@
     "phLevel": "pH 2.0 (Кислотний гель)",
     "b2bTag": "Топ продажів",
     "image": "./images/product-1.webp",
-    "canvasImage": "./images/p07.jpg",
+    "canvasImage": "./images/product-1.webp",
     "sizes": [
       {
         "label": "750 мл",
@@ -179,7 +179,7 @@
     "phLevel": "pH 9.0 (Слаболужний)",
     "b2bTag": "3 варіанти тари",
     "image": "./images/product-7.webp",
-    "canvasImage": "./images/p08.jpg",
+    "canvasImage": "./images/product-7.webp",
     "sizes": [
       {
         "label": "500мл (з розпилювачем)",
@@ -209,7 +209,7 @@
     "phLevel": "pH 6.5 (Нейтральний)",
     "b2bTag": "Роздріб 500мл",
     "image": "./images/product-4.webp",
-    "canvasImage": "./images/p09.jpg",
+    "canvasImage": "./images/product-4.webp",
     "sizes": [
       {
         "label": "500мл",
@@ -231,7 +231,7 @@
     "phLevel": "pH 6.5 (Нейтральний)",
     "b2bTag": "Роздріб 500мл",
     "image": "./images/product-8.webp",
-    "canvasImage": "./images/p10.jpg",
+    "canvasImage": "./images/product-8.webp",
     "sizes": [
       {
         "label": "500мл",
@@ -253,7 +253,7 @@
     "phLevel": "pH 6.5 (Нейтральний)",
     "b2bTag": "Каністра 5Л",
     "image": "./images/product-9.webp",
-    "canvasImage": "./images/p11.jpg",
+    "canvasImage": "./images/product-9.webp",
     "sizes": [
       {
         "label": "5л",
@@ -275,7 +275,7 @@
     "phLevel": "pH 6.5 (Нейтральний)",
     "b2bTag": "Каністра 5Л",
     "image": "./images/product-12.webp",
-    "canvasImage": "./images/p12.jpg",
+    "canvasImage": "./images/product-12.webp",
     "sizes": [
       {
         "label": "5л",
@@ -297,7 +297,7 @@
     "phLevel": "pH 5.5 (Делікатний)",
     "b2bTag": "Каністра 5Л",
     "image": "./images/product-13.webp",
-    "canvasImage": "./images/p13.jpg",
+    "canvasImage": "./images/product-13.webp",
     "sizes": [
       {
         "label": "5л",
@@ -319,7 +319,7 @@
     "phLevel": "pH 5.5 (Делікатний)",
     "b2bTag": "Каністра 5Л",
     "image": "./images/product-14.webp",
-    "canvasImage": "./images/p14.jpg",
+    "canvasImage": "./images/product-14.webp",
     "sizes": [
       {
         "label": "5л",
