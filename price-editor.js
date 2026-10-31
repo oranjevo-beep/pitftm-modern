@@ -1,1 +1,1 @@
-// Integrated into unified application bundle (see index.js and editor-config.json)
+/* Price editor lives in the inline app (index.html). Password: editor-config.json (default changeme). This file is a no-op stub. */
